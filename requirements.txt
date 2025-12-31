@@ -1,25 +1,22 @@
-﻿# --- Core Environment ---
-python-dotenv
-zstandard
+﻿python-dotenv
 
-# --- LangChain Ecosystem (2025 Optimized) ---
+#langchain and related packages
 langchain
 langchain-community
 langchain-core
 langchain-text-splitters
-langchain-google-genai
-
-# --- AI & Embeddings ---
-# Lưu ý: torch sẽ tự cài đặt bản phù hợp với hệ điều hành của bạn
-torch
-transformers
 sentence-transformers
 langchain-huggingface
-huggingface-hub
-accelerate
+langchain-google-genai
+langchain-chroma
+langchain-openai
 
-# --- Vector Database ---
+google-generativeai
+# PDF loading
+pypdf
+
+# db
 chromadb
 
-# --- Data Loading ---
-pypdf
+streamlit 
+numpy==1.26.4
