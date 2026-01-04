@@ -1,0 +1,388 @@
+15
+Điều 20. Cách tính điểm quá trình, điểm học phần, điểm trung bình chung
+1. Điểm quá trình và điểm thi kết thúc học phần được chấm theo thang điểm 20
+(từ 0 đến 20), có lẻ đến 01 chữ số thập phân.
+2. Đối với học phần tiếng Pháp, sinh viên được miễn học nếu cung cấp chứng chỉ
+tiếng Pháp DELF A2 trở lên (hoặc TCF từ 200 điểm trở lên còn giá trị tính đến thời
+điểm bắt đầu học phần) trước khi kết thúc học phần. Sinh viên có chứng chỉ DELF
+A2 hoặc TCF 200 điểm được tính điểm tối đa đối với các học phần tiếng Pháp cốt lõi;
+được miễn học nhưng vẫn phải dự thi và lấy kết quả học phần theo kết quả thi đối với
+các học phần tiếng Pháp tự chọn. Sinh viên có chứng chỉ DELF B1 hoặc TCF 300
+điểm trở lên được miễn học, miễn thi, tính điểm tối đa cho tất cả các học phần tiếng
+Pháp cốt lõi và tự chọn trong chương trình. Các học phần tiếng Pháp thuộc các chương
+trình đào tạo song bằng được quy định riêng. Sinh viên được giảm tiền học đối với
+tín chỉ được công nhận điểm theo Quy định về học phí và phí dịch vụ đào tạo hiện
+hành.
+3. Sinh viên không tham dự kiểm tra giữa kỳ, kiểm tra thực hành sẽ bị tính điểm
+0 vào điểm thành phần nhưng vẫn được phép tham gia kỳ thi cuối kỳ.
+4. Điểm học phần là trung bình cộng các điểm đánh giá quá trình và điểm thi kết
+thúc học phần theo trọng số được quy định trong Đề cương chi tiết học phần và được
+làm tròn đến 01 chữ số thập phân. Điểm học phần được quy đổi từ thang điểm 20
+sang các thang điểm 4 và thang điểm chữ theo bảng sau:
+Đánh giá
+Thang điểm 20 | Thang điểm chữ | Thang điểm 4
+17,0 - 20,0
+A+
+4,0
+15,0 - 16,9
+A
+3,6
+14,0 - 14,9
+B+
+3,2
+Đạt
+13,0 - 13,9
+B
+2,5
+12,0 - 12,9
+C+
+2,3
+11,0 11,9
+C
+2,0
+10,0 - 10,9
+D
+1,5
+Không đạt
+0,0 - 9,9
+F
+0,0
+5. Thang điểm 20 là thang điểm đánh giá chính thức, được dùng để xét học vụ,
+xét tốt nghiệp, đánh giá học tập và xếp loại kết quả học tập của sinh viên. Một học
+phần được xem là đạt (được tích lũy) nếu điểm đánh giá học phần đạt từ 10,0 trở lên.
+Sinh viên có điểm đánh giá học phần dưới 10,0 được xem là không đạt.
+
+6. Cách tính điểm trung bình chung:
+16
+Điểm trung bình chung học kỳ, năm học và điểm trung bình chung tích lũy được tính
+theo công thức sau và được làm tròn đến 02 chữ số thập phân:
+n
+Σα
+A==1
+n
+W
+Ση
+i=1
+* ni
+Trong đó:
+4 là điểm trung bình chung học kỳ, mỗi năm hoặc trung bình chung tích lũy;
+ai là điểm của học phần thứ i;
+ni là số tín chỉ của học phần thứ i;
+n là tổng số học phần.
+Điều 21. Tổ chức kiểm tra và thi kết thúc học phần
+Việc kiểm tra và chấm điểm quá trình của mỗi học phần do giảng viên trực tiếp
+giảng dạy học phần đó thực hiện. Việc tổ chức thi được thực hiện theo Quy định quản
+lý và tổ chức thi hiện hành.
+Điều 22. Chấm khóa luận tốt nghiệp
+1. Lãnh đạo khoa chuyên môn đề nghị danh sách Hội đồng chấm khóa luận tốt
+nghiệp gồm ít nhất 03 thành viên và trình Hiệu trưởng phê duyệt ít nhất một tuần
+trước buổi bảo vệ.
+2. Khóa luận tốt nghiệp được chấm theo thang điểm 20, được làm tròn đến 01
+chữ số thập phân.
+3. Điểm khóa luận tốt nghiệp được thông báo công khai trong vòng 01 tuần sau
+khi các Hội đồng chấm khóa luận tốt nghiệp hoàn thành nhiệm vụ và sinh viên nộp
+lại luận văn đã chỉnh sửa theo ý kiến góp ý của Hội đồng.
+4. Trong trường hợp bảo vệ khóa luận tốt nghiệp không đạt, sinh viên phải báo
+cáo lại/thực tập lại tùy theo quyết định của Hội đồng chấm khóa luận và phải đóng
+phí bảo vệ lại/thực tập lại.
+sau:
+Điều 23. Đánh giá kết quả học tập
+1. Kết quả học tập của sinh viên được đánh giá sau mỗi học kỳ theo các tiêu chí
+a) Tổng số tín chỉ mà sinh viên đã đăng ký trong mỗi học kỳ.
+b) Khối lượng tín chỉ tích lũy là tổng số tín chỉ của những học phần đã hoàn thành
+và được đánh giá đạt tính từ đầu khóa học.
+
+17
+c) Điểm trung bình chung học kỳ là điểm trung bình theo trọng số tín chỉ của các
+học phần mà sinh viên đăng ký học trong học kỳ đó (bao gồm cả các học phần được
+đánh giá loại Đạt và Không đạt).
+d) Điểm trung bình chung tích lũy là điểm trung bình theo trọng số tín chỉ của
+các học phần đã được đánh giá loại đạt mà sinh viên đã tích lũy được, tính từ đầu
+khóa học cho tới thời điểm xem xét.
+2. Kết quả đánh giá học phần điều kiện (Triết học, Giáo dục quốc phòng - an
+ninh, kỹ năng bổ trợ...) không tính vào điểm trung bình chung học kỳ và điểm trung
+bình chung tích lũy.
+3. Điểm trung bình chung mỗi năm học được dùng để xét tình trạng học tập, học
+bổng, khen thưởng sau mỗi năm học.
+4. Điểm trung bình chung tích lũy được dùng để xét buộc thôi học, xếp loại học
+lực, xếp hạng tốt nghiệp.
+Điều 24. Xếp năm đào tạo
+1. Xếp năm đào tạo là sự đánh giá tiến độ học tập của sinh viên căn cứ vào số tín
+chỉ sinh viên đã tích lũy so với số tín chỉ trung bình cần tích lũy trong mỗi năm tương
+ứng với chương trình đào tạo. Sau mỗi học kỳ, căn cứ vào số tín chỉ tích lũy, sinh
+viên được xếp năm đào tạo như sau:
+Xếp năm đào tạo
+Số tín chỉ tích lũy
+< 60/IELTS < 5.0
+Năm B0
+Năm B1
+Năm B2
+Năm B3
+Năm B4 (*)
+Năm B5 (*)
+<40
+40 - 79
+Từ 80
+Từ 120
+Từ 160
+(*) Áp dụng đối với các ngành đặc thù
+5. Sinh viên được xét hoàn thành năm bồi dưỡng tiếng Anh B0 nếu đạt một trong
+các điều kiện sau đây:
+Hoàn thành quá trình học tập của toàn bộ 60 tín chỉ trong chương trình (có mặt
+ít nhất 70% thời lượng học tập của từng học phần) và tích lũy được tối thiểu 40/60 tín
+chỉ (có kết quả đạt), hoặc;
+Có chứng chỉ tiếng Anh tương đương IELTS 5.0 trở lên. Các sinh viên đạt điều
+kiện này được đăng ký học ngay các học phần của năm đào tạo cơ bản.
+
+18
+6. Trong quá trình học tập chương trình năm bồi dưỡng tiếng Anh B0, để được
+công nhận hoàn thành chương trình trước thời hạn và đăng ký học trước một số học
+phần của năm đào tạo cơ bản, sinh viên có thể đăng ký bổ sung chứng chỉ tiếng Anh
+tương đương IELTS 5.0 trở lên với các điều kiện như sau:
+-
+- Có chứng chỉ tiếng Anh tương đương IELTS 5.0 trở lên;
+Không bị cấm thi bất cứ học phần nào trong chương trình tính đến thời điểm
+nộp chứng chỉ.
+CHƯƠNG VII. XỬ LÝ HỌC VỤ
+Điều 25. Hình thức kỷ luật đối với sinh viên
+Tùy theo tính chất, mức độ, hậu quả của hành vi vi phạm, một trong các hình
+thức kỷ luật sẽ được áp dụng theo quy định của Quy chế sinh viên hiện hành.
+Điều 26. Vi phạm quy định về học tập và khung xử lý kỷ luật
+1. Đến muộn giờ học, giờ thực tập thường xuyên, có hệ thống: giảng viên nhắc
+nhở và được quyền không cho sinh viên vào lớp nếu sinh viên đến muộn theo quy
+định của lớp học đã được thông báo từ giảng viên và không cho tham dự thi kết thúc
+học phần nếu sinh viên vắng mặt quá 30% số buổi học. Với những trường hợp không
+được thi kết thúc học phần, sinh viên phải học lại học phần đó.
+2. Mất trật tự, làm việc riêng trong giờ học, giờ thực tập và tự học: tuỳ theo mức
+độ, xử lý từ nhắc nhở đến mời ra khỏi lớp.
+3. Không tuân theo chỉ dẫn của giảng viên trong lớp học, có thái độ chống đối
+gây ảnh hưởng đến môi trường học tập hoặc an ninh an toàn phòng thí nghiệm: tuỳ
+theo mức độ, xử lý từ khiển trách đến buộc thôi học.
+4. Nghỉ học không phép hoặc quá phép: tuỳ theo mức độ, xử lý từ nhắc nhở đến
+xóa tên khỏi danh sách sinh viên.
+5. Học hộ hoặc nhờ người khác học hộ: tuỳ theo mức độ, xử lý từ cảnh cáo đến
+buộc thôi học.
+Điều 27. Vi phạm quy định thi, kiểm tra và khung xử lý kỷ luật
+1. Sinh viên thi hộ hoặc nhờ người khác thi hộ đều bị kỷ luật ở mức đình chỉ học
+tập một năm đối với trường hợp vi phạm lần thứ nhất và buộc thôi học đối với trường
+hợp vi phạm lần thứ hai.
+2. Nhờ làm hoặc sao chép tiểu luận học phần, khóa luận tốt nghiệp: tuỳ theo mức
+độ, xử lý từ cảnh cáo đến buộc thôi học. Ở mức độ cảnh cáo, sinh viên sẽ phải làm lại
+và trình bày/bảo vệ lại tiểu luận học phần/khoá luận tốt nghiệp. Điểm học phần hoặc
+
+19
+điểm khoá luận sẽ bị trừ tương ứng với mức độ vi phạm, do Hội đồng kỷ luật quyết
+định. Thành phần và trình tự làm việc của Hội đồng kỷ luật được quy định trong Quy
+chế sinh viên hiện hành.
+3. Tổ chức học, thi, kiểm tra hộ; tổ chức làm hộ tiểu luận học phần, khóa luận tốt
+nghiệp: xử lý buộc thôi học; nếu vi phạm nghiêm trọng, giao cho cơ quan chức năng
+xử lý theo quy định của pháp luật.
+4. Vi phạm trong phòng thi: thực hiện theo Quy định quản lý tổ chức thi và chấm
+thi hiện hành.
+Điều 28. Khung xử lý kỷ luật đối với cán bộ trong các công tác đào tạo
+Người tham gia công tác tuyển sinh, coi thi, tổ chức thi và chấm thi vi phạm quy
+định (bị phát hiện trong khi làm nhiệm vụ hoặc sau khi kỳ thi đã kết thúc) và các
+giảng viên vi phạm quy định giảng dạy, tùy theo mức độ, sẽ bị áp dụng các hình thức
+kỷ luật theo quy định của Trường.
+Điều 29. Thi lại, thi cải thiện điểm, học lại
+1. Thi lại
+a) Sinh viên có điểm học phần dưới 10,0 được tham gia thi lại 01 lần cho mỗi lần
+đăng ký học phần. Kỳ thi lại được tổ chức ngay sau kỳ thi kết thúc học phần. Điểm
+thi lại sẽ thay thế điểm thi kết thúc học phần cũ và được tính cùng các điểm thành
+phần để tính điểm học phần. Điểm học và thi lần cuối cùng là điểm chính thức.
+b) Một số học phần thực hành có thể không có kỳ thi lại.
+c) Sinh viên vắng mặt tại buổi thi kết thúc học phần có đơn trình bày lý do chính
+đáng (được Lãnh đạo khoa chấp nhận) có thể được xem xét tham gia vào lần thi khác
+(nếu có) của học phần đó trong năm và được tính điểm lần 01;
+d) Sinh viên được quyền xin phúc tra điểm thi và phải gửi đơn lên khoa trong
+vòng 01 tuần kể từ ngày công bố điểm;
+e) Sinh viên phúc tra, thi lại, đóng phí theo Quy định về học phí và phí dịch vụ
+đào tạo hiện hành.
+2. Thi cải thiện điểm
+a) Sinh viên được đăng ký thi cải thiện điểm với học phần có điểm học phần từ
+10,0 trở lên và chỉ được đăng ký thi cải thiện điểm 01 lần/học phần và tối đa 10 tín
+chỉ/học kỳ;
+b) Sinh viên được đăng ký thi cải thiện điểm trong kỳ thi kết thúc học phần của
+lớp học phần tương ứng. Trường hợp điểm thi cải thiện thấp hơn điểm thi trước đó,
+sinh viên được quyền chọn điểm thi cao hơn và được tính cùng các điểm thành phần
+của học phần để tính điểm học phần.
+
+20
+c) Trong một số trường hợp đặc biệt, Trường xem xét tổ chức kỳ thi bổ sung.
+Việc tổ chức và thực hiện do Hiệu trưởng quyết định.
+3. Học lại
+a) Sinh viên buộc phải học lại trong các trường hợp sau: không đủ điều kiện dự
+thi kết thúc học phần; thi không đạt cả ở kỳ thi kết thúc học phần và kỳ thi lại đầu
+tiên;
+b) Ngoài các đối tượng áp dụng tại điểm a khoản 3 Điều này sinh viên được đăng
+ký học lại các học phần đã đạt nếu có nguyện vọng cải thiện kết quả học tập.
+Điều 30. Cảnh báo học tập và buộc thôi học
+1. Cuối mỗi học kỳ, sinh viên bị cảnh báo học tập nếu thuộc một trong các trường
+hợp sau:
+a) Tổng số tín chỉ không đạt trong học kỳ vượt quá 50% khối lượng học tập đã
+đăng ký học trong học kỳ, hoặc tổng số tín chỉ chưa hoàn thành từ đầu khóa vượt quá
+30 tín chỉ;
+b) Điểm trung bình học kỳ đạt dưới 6,0 đối với học kỳ đầu, dưới 8,0 đối với các
+học kỳ tiếp theo;
+c) Có số lượng tín chỉ đăng ký học ít hơn 20 tín chỉ.
+2. Sinh viên bị buộc thôi học trong các trường hợp sau:
+a) Sinh viên không tích lũy đủ số tín chỉ theo quy định tại khoản 1 Điều 12 sau
+thời gian được phép học tại Trường được quy định tại khoản 3 Điều 4 của Quy chế
+này;
+b) Bị cảnh báo học tập 03 học kỳ liên tiếp;
+c) Điểm trung bình chung của 02 học kỳ liên tiếp bằng 0;
+d) Bỏ học không có lý do trong 01 học kỳ (không có quyết định nghỉ học tạm
+thời, không đăng ký học, có khối lượng tín chỉ học tập bằng 0);
+e) Sau khi hết thời hạn nghỉ học tạm thời, sinh viên không làm thủ tục quay lại
+học;
+f) Sinh viên vi phạm kỷ luật bị Hội đồng kỷ luật ra quyết định buộc thôi học;
+g) Vi phạm kỷ luật có tính chất và mức độ nghiêm trọng, gây ảnh hưởng xấu đến
+Trường và xã hội, hoặc vi phạm pháp luật bị xử phạt tù giam.
+Sinh viên có tên trong quyết định buộc thôi học bị xóa tên khỏi danh sách sinh
+viên chính thức của Trường. Trong vòng 01 tháng sau khi có quyết định buộc thôi
+học, Trường có trách nhiệm thông báo đến sinh viên theo địa chỉ email chính thức
+Trường đã cấp, đồng thời thông báo đến gia đình sinh viên theo địa chỉ sinh viên khai
+báo với Trường. Học phí học kỳ đã nộp của sinh viên sẽ không được hoàn trả lại.
+
+21
+Điều 31. Nghỉ học tạm thời và thôi học
+1. Sinh viên được xin nghỉ học tạm thời và bảo lưu kết quả đã học trong các
+trường hợp sau:
+a) Được điều động vào lực lượng vũ trang;
+b) Được cơ quan có thẩm quyền điều động, đại diện quốc gia tham dự các kỳ thi,
+giải đấu quốc tế;
+c) Lí do cá nhân: ốm đau, thai sản hoặc tai nạn phải điều trị thời gian dài có chứng
+nhận của cơ sở y tế có thẩm quyền theo quy định;
+d) Vì lý do cá nhân khác, sinh viên phải hoàn thành ít nhất 01 học kỳ ở trường và
+không thuộc diện bị xem xét buộc thôi học hoặc bị xem xét kỷ luật.
+2. Để bảo lưu kết quả học, sinh viên phải thực hiện đầy đủ nghĩa vụ đối với
+Trường, đồng thời làm đơn tới phòng Công tác sinh viên, được Lãnh đạo khoa chấp
+thuận và Hiệu trưởng phê duyệt. Thời gian bảo lưu kết quả học tập mỗi lần tối đa là
+01 năm và không quá 02 lần liên tiếp. Sau khi kết thúc thời gian bảo lưu, sinh viên
+phải liên hệ với Trường để xin gia hạn trong trường hợp muốn kéo dài thời gian bảo
+lưu. Thời gian nghỉ học tạm thời vì nhu cầu cá nhân được tính vào thời gian sinh viên
+được phép học tại Trường được quy định tại khoản 3 Điều 4 của Quy chế này.
+3. Sinh viên nghỉ học tạm thời nếu muốn học tiếp phải gửi đơn đề nghị tới phòng
+Công tác sinh viên, được Lãnh đạo khoa chấp thuận và Hiệu trưởng phê duyệt ra
+quyết định chậm nhất 02 tuần trước khi kết thúc thời gian bảo lưu.
+4. Hết thời gian nghỉ học tạm thời, sinh viên không làm đơn quay lại học sẽ bị
+xem xét xóa tên khỏi danh sách sinh viên của Trường.
+5. Sinh viên được xin thôi học vì lý do cá nhân: sinh viên nộp đơn xin thôi học
+và được Hiệu trưởng phê duyệt.
+Điều 32. Trao đổi sinh viên và hợp tác trong đào tạo
+1. Căn cứ vào thỏa thuận công nhận lẫn nhau về quy trình đào tạo giữa Trường
+và cơ sở đào tạo đối tác, Trường cho phép sinh viên được học một số học phần tại cơ
+sở đào tạo khác và ngược lại.
+2. Việc học tập tại cơ sở đào tạo khác phải được sự đồng ý bằng văn bản của đại
+diện hai bên. Tổng số tín chỉ tích lũy tại cơ sở đào tạo khác không vượt quá 25% tổng
+khối lượng của chương trình đào tạo (không bao gồm học phần Giáo dục quốc phòng
+- an ninh).
+
+22
+22
+Điều 33. Thủ tục chuyển ngành, chuyển trường
+1. Chuyển ngành
+a) Sinh viên được đăng ký chuyển ngành sau khi học tối thiểu 01 học kỳ của
+năm học thứ nhất (B1) và có điểm trung bình tích lũy từ 10,00 trở lên.
+b) Ngành chuyển đến phải là ngành có định hướng gần với ngành đang theo học.
+c) Sinh viên không được đăng ký chuyển ngành khi đang trong thời gian bị xử lý
+kỷ luật.
+d) Sinh viên làm đơn đăng ký chuyển ngành theo kế hoạch thông báo của trường.
+Căn cứ theo nguyện vọng, kết quả học tập và sự phù hợp năng lực học tập của sinh
+viên, đặc điểm của ngành đào tạo, có sự đồng ý của Lãnh đạo khoa chuyên môn ngành
+chuyển đi và chuyển đến, phòng Quản lý đào tạo tổng hợp danh sách và tổ chức Hội
+đồng xét chuyển ngành. Căn cứ kết quả của hội đồng, Hiệu trưởng ra Quyết định công
+nhận chuyển ngành. Sinh viên được chuyển ngành phải học các học phần theo quy
+định của chương trình đào tạo ngành chuyển đến.
+e) Các quy định và hướng dẫn cụ thể được thông báo hằng năm.
+2. Chuyển trường
+a) Sinh viên được chuyển đến một cơ sở đào tạo khác khi không là sinh viên năm
+nhất hoặc năm cuối, không thuộc diện bị xem xét buộc thôi học và còn đủ thời gian
+học tập theo quy định, đồng thời hoàn tất thủ tục thôi học tại Trường.
+b) Sinh viên từ các cơ sở đào tạo khác được phép chuyển đến học tại Trường nếu
+đáp ứng các yêu cầu quy định tại Thông tin tuyển sinh trình độ đại học năm học đó
+và được khoa chuyên môn sinh viên đăng ký ngành học đồng ý.
+c) Trường hợp đặc biệt do Hiệu trưởng xem xét quyết định.
+CHƯƠNG VIII. CÔNG NHẬN TỐT NGHIỆP
+Điều 34. Hội đồng xét công nhận tốt nghiệp và cấp bằng
+1. Hội đồng xét tốt nghiệp Trường gồm: Hiệu trưởng, Phó Hiệu trưởng, Trưởng
+phòng Quản lý đào tạo, phòng Công tác sinh viên, các Khoa và các đơn vị liên quan
+đến đào tạo.
+2. Khoa chuyên môn gửi danh sách sinh viên được xét tốt nghiệp về phòng Quản
+lý đào tạo. Phòng Quản lý đào tạo tổng hợp kết quả xét tốt nghiệp, phối hợp với phòng
+Công tác sinh viên để rà soát, kiểm tra các điều kiện tốt nghiệp của từng sinh viên và
+lập danh sách sinh viên đủ điều kiện trình Hội đồng xét tốt nghiệp. Hằng năm, Trường
+tổ chức 04 đợt xét tốt nghiệp.
+
+23
+3. Căn cứ kết quả biên bản họp Hội đồng xét công nhận tốt nghiệp và cấp bằng,
+Hiệu trưởng ra Quyết định công nhận tốt nghiệp và cấp bằng trong thời hạn 03 tháng
+tính từ thời điểm sinh viên đáp ứng đầy đủ điều kiện tốt nghiệp và hoàn thành nghĩa
+vụ với Trường. Việc thực hiện cấp bằng cho sinh viên được thực hiện theo Quy chế
+quản lý văn bằng, chứng chỉ hiện hành của Trường.
+Điều 35. Điều kiện tốt nghiệp
+1. Để được công nhận tốt nghiệp, sinh viên phải:
+a) Hoàn thành tất cả các học phần bắt buộc và tích lũy đủ số tín chỉ theo quy định
+của chương trình đào tạo, điểm trung bình chung tích lũy của toàn khóa học đạt từ
+10,00 điểm trở lên;
+b) Hoàn thành các học phần điều kiện (Triết học, Giáo dục quốc phòng - an
+ninh...);
+c) Đạt chuẩn đầu ra ngoại ngữ theo quy định của Trường;
+d) Nộp học phí đầy đủ và hoàn thành các nghĩa vụ bắt buộc khác với Trường;
+e) Đạt điểm đánh giá rèn luyện theo quy định hiện hành;
+f) Cho đến thời điểm xét tốt nghiệp không bị truy cứu trách nhiệm hình sự hoặc
+không đang trong thời gian bị kỷ luật ở mức đình chỉ học tập;
+g) Sinh viên học vượt và có đủ điều kiện tốt nghiệp sớm so với thời gian đào tạo
+chuẩn của khoá học thì phải làm đơn gửi Khoa chuyên môn đề nghị xét tốt nghiệp.
+2. Sinh viên đã hết thời gian học tập tối đa theo quy định nhưng chưa đủ điều
+kiện tốt nghiệp do chưa hoàn thành những học phần điều kiện trong thời hạn 03 năm
+tính từ khi thôi học được hoàn thiện các điều kiện còn thiếu và đề nghị xét công nhận
+tốt nghiệp.
+3. Sinh viên không tốt nghiệp được cấp chứng nhận về các học phần đã tích lũy
+trong chương trình đào tạo của cơ sở đào tạo.
+Điều 36. Phân loại tốt nghiệp
+1. Phân loại tốt nghiệp của trình độ đại học căn cứ theo tiêu chí sau:
+Phân loại
+Thang điểm 20 | Thang điểm 4
+Xuất sắc
+17,00 - 20,00
+3,60 - 4,00
+Giỏi
+15,00 - 16,99
+3,20 -3,59
+Khá
+13,00 - 14,99
+2,50 -3,19
+Trung bình khá
+12,00-12,99
+2,00 -2,49
+Trung bình
+10,00 11,99
+1,50 1,99
+
+24
+2. Hạng tốt nghiệp của sinh viên có điểm trung bình tích lũy loại xuất sắc sẽ bị
+giảm đi một mức nếu thuộc một trong các trường hợp sau:
+a) Khối lượng của các học phần phải học lại vượt quá 5% so với tổng số tín chỉ
+quy định cho toàn chương trình;
+b) Sinh viên đã bị kỷ luật từ mức cảnh cáo trở lên trong thời gian học.
+CHƯƠNG IX. ĐIỀU KHOẢN THI HÀNH
+1. Quy chế này có hiệu lực kể từ ngày ký.
+2. Trong quá trình thực hiện, nếu có vấn đề phát sinh cần điều chỉnh, bổ sung,
+các đơn vị, cá nhân phản ánh về phòng Quản lý đào tạo để tổng hợp, báo cáo Hiệu
+trưởng xem xét, quyết định.
+HIỆU TRƯỞNG
+CHÍNH
+KHOA
+AM
+нос
+VA
+CONG
+TRUONG
+DAI HOC
+KHOA HỌC ĐẢ
+CÔNG NGHỆ
+EN HAN
+VIE
+HAJean-Marc Lavest
+NGHE
