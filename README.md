@@ -32,40 +32,41 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
   </thead>
   <tbody>
     <tr>
-      <td>Your Name</td>
+      <td>Đào Chí Trung</td>
+      <td>23BA14295</td>
       <td>Project Lead / Backend</td>
-      <td>Project Lead / Backend</td>
     </tr>
     <tr>
-      <td>Member 2</td>
+      <td>Nguyễn Khải Minh</td>
+      <td>2410607</td>
+      <td>RAG Base / Prompt Engineering</td>
+    </tr>
+    <tr>
+      <td>Nguyễn Ngọc Hiếu</td>
+      <td>23BA14109</td>
       <td>Data Processing / OCR</td>
-      <td>Data Processing / OCR</td>
     </tr>
     <tr>
-      <td>Member 3</td>
-      <td>Frontend / UI</td>
-      <td>Frontend / UI</td>
+      <td>Vũ Thị Kim Oanh</td>
+      <td>23BA14225</td>
+      <td>Research / Problem statement</td>
     </tr>
     <tr>
-      <td>Member 4</td>
-      <td>Research / Prompt Engineering</td>
-      <td>Research / Prompt Engineering</td>
+      <td>Phạm Gia Anh</td>
+      <td>2410084</td>
+      <td>Research / Embedding model / Database</td>
     </tr>
     <tr>
-      <td>Member 4</td>
-      <td>Research / Prompt Engineering</td>
-      <td>Research / Prompt Engineering</td>
+      <td>Nguyễn Thị Ngọc Ánh</td>
+      <td>2411095</td>
+      <td>Research / OCR Model / Data chunking</td>
     </tr>
     <tr>
-      <td>Member 4</td>
-      <td>Research / Prompt Engineering</td>
-      <td>Research / Prompt Engineering</td>
+      <td>Nguyễn Xuân Chuyên</td>
+      <td>2410181</td>
+      <td>Research / Rag core</td>
     </tr>
-    <tr>
-      <td>Member 4</td>
-      <td>Research / Prompt Engineering</td>
-      <td>Research / Prompt Engineering</td>
-    </tr>
+
   </tbody>
 </table>
 
