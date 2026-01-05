@@ -25,46 +25,54 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Student id</th>
-      <th>Role</th>
+        <th></th>
+        <th>Name</th>
+        <th>Student id</th>
+        <th>Role</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Đào Chí Trung</td>
-      <td>23BA14295</td>
-      <td>Project Lead / Backend</td>
+        <td>1</td>
+        <td>Đào Chí Trung</td>
+        <td>23BA14295</td>
+        <td>Project Lead / Backend</td>
     </tr>
     <tr>
-      <td>Nguyễn Khải Minh</td>
-      <td>2410607</td>
-      <td>RAG Base / Prompt Engineering</td>
+        <th>2</th>
+         <td>Nguyễn Khải Minh</td>
+        <td>2410607</td>
+        <td>RAG Base / Prompt Engineering</td>
     </tr>
     <tr>
-      <td>Nguyễn Ngọc Hiếu</td>
-      <td>23BA14109</td>
-      <td>Data Processing / OCR</td>
+        <th>3</th>
+         <td>Nguyễn Ngọc Hiếu</td>
+        <td>23BA14109</td>
+        <td>Data Processing / OCR</td>
     </tr>
     <tr>
-      <td>Vũ Thị Kim Oanh</td>
-      <td>23BA14225</td>
-      <td>Research / Problem statement</td>
+        <th>4</th>
+        <td>Vũ Thị Kim Oanh</td>
+        <td>23BA14225</td>
+        <td>Research / Problem statement</td>
     </tr>
     <tr>
-      <td>Phạm Gia Anh</td>
-      <td>2410084</td>
-      <td>Research / Embedding model / Database</td>
+        <th>5</th>
+        <td>Phạm Gia Anh</td>
+        <td>2410084</td>
+        <td>Research / Embedding model / Database</td>
     </tr>
     <tr>
-      <td>Nguyễn Thị Ngọc Ánh</td>
-      <td>2411095</td>
-      <td>Research / OCR Model / Data chunking</td>
+        <th>6</th>
+        <td>Nguyễn Thị Ngọc Ánh</td>
+        <td>2411095</td>
+        <td>Research / OCR Model / Data chunking</td>
     </tr>
     <tr>
-      <td>Nguyễn Xuân Chuyên</td>
-      <td>2410181</td>
-      <td>Research / Rag core</td>
+        <th>7</th>
+        <td>Nguyễn Xuân Chuyên</td>
+        <td>2410181</td>
+        <td>Research / Rag core</td>
     </tr>
 
   </tbody>
