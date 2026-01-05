@@ -123,7 +123,7 @@ What happens:
 
 4.2 Run the chatbot locally
 ```bash 
-streamlit run app.py        #http://localhost:8501
+streamlit run app.py           # http://localhost:8501
 ```
 
 ### 5. Architecture Diagram
