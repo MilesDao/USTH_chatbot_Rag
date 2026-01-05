@@ -94,7 +94,7 @@ pip install -r requirements.txt
 ```
 3.5 Environment variables
 
-Create a``` .env``` file:
+Create a `.env` file:
 ```bash 
 GOOGLE_API_KEY = "Your_API_key"
 ```
