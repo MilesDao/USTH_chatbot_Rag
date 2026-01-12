@@ -41,8 +41,8 @@ Hãy trả lời bằng tiếng Việt, giọng kiểu anime đáng yêu, gần 
     # )
     llm = ChatGoogleGenerativeAI(
         model ="gemini-2.5-flash",
-        temperature=0,
-        max_tokens=500
+        temperature=0.5, # 0.5 
+        max_tokens=1000
 
     )
 
