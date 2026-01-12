@@ -1,31 +1,65 @@
 import streamlit as st
+from agentic import rag_answer
 
-from retriever import get_retriever
-from agentic import build_rag_chain
+st.set_page_config(
+    page_title="USTH RAG Chatbot",
+    page_icon="🤖",
+    layout="wide"
+)
 
-st.set_page_config(page_title="USTH RAG Chatbot", page_icon="🤖")
-st.title("USTH RAG Chatbot")
+st.title("🤖 USTH RAG Chatbot")
 
+# ======================
+# Session state
+# ======================
 if "chat" not in st.session_state:
     st.session_state.chat = []
 
-rag_chain = build_rag_chain()
-
-for msg in st.session_state.chat:
-    with st.chat_message(msg["role"]):
-        st.write(msg["content"])
-
+# ======================
+# Input
+# ======================
 user_input = st.chat_input("Nhập câu hỏi...")
 
 if user_input:
-    st.session_state.chat.append({"role": "user", "content": user_input})
+    with st.spinner("Đang truy xuất tài liệu..."):
+        answer, docs = rag_answer(user_input)
 
-    with st.chat_message("user"):
-        st.write(user_input)
+    st.session_state.chat.append({
+        "question": user_input,
+        "answer": answer,
+        "docs": docs
+    })
 
-    with st.chat_message("assistant"):
-        with st.spinner("Chờ tý, sự thật chỉ có một... "):
-            answer = rag_chain.invoke({"question": user_input})
-            st.write(answer)
+# ======================
+# Render history
+# ======================
+for turn in st.session_state.chat:
+    st.markdown("---")
 
-    st.session_state.chat.append({"role": "assistant", "content": answer})
+    col_answer, col_chunks = st.columns([2, 1])
+
+    # ===== LEFT: ANSWER =====
+    with col_answer:
+        st.subheader("🤖 Câu trả lời")
+        st.markdown(f"**Câu hỏi:** {turn['question']}")
+        st.markdown(turn["answer"])
+
+    # ===== RIGHT: CHUNKS =====
+    with col_chunks:
+        st.subheader("Tài liệu liên quan")
+
+        if not turn["docs"]:
+            st.write("Không có chunk nào được truy xuất.")
+        else:
+            for i, doc in enumerate(turn["docs"], 1):
+                with st.expander(f"Chunk {i}"):
+                    st.markdown(
+                        f"""
+- **chunk_id:** `{doc.metadata.get('chunk_id', 'N/A')}`
+- **page:** `{doc.metadata.get('page', 'N/A')}`
+- **source:** `{doc.metadata.get('source', 'N/A')}`
+
+{doc.page_content}
+"""
+                    )
+
