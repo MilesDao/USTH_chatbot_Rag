@@ -42,7 +42,7 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
         <th>2</th>
          <td>Nguyễn Khải Minh</td>
         <td>2410607</td>
-        <td>RAG Base / Prompt Engineering</td>
+        <td>RAG Base / Prompt Engineering / Evaluation core</td>
     </tr>
     <tr>
         <th>3</th>
@@ -72,7 +72,7 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
         <th>7</th>
         <td>Nguyễn Xuân Chuyên</td>
         <td>2410181</td>
-        <td>Research / Rag core</td>
+        <td>Research / Rag core / Evaluation</td>
     </tr>
 
   </tbody>
