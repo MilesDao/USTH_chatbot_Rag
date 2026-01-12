@@ -4,7 +4,7 @@ from retriever import get_retriever
 from agentic import build_rag_chain
 
 st.set_page_config(page_title="USTH RAG Chatbot", page_icon="🤖")
-st.title("USTH RAG Chatbot 🤖")
+st.title("USTH RAG Chatbot")
 
 if "chat" not in st.session_state:
     st.session_state.chat = []

@@ -17,9 +17,11 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_overlap=50
 )
 docs = text_splitter.split_documents(documents)
+print(f" Total chunks (== total vectors): {len(docs)}")
 
 PERSIST_DIR = "chroma_db"
 COLLECTION_NAME = "langchain"
+
 
 def embed_in_batches(docs, batch_size=10, delay=0.2):
     vector_store = Chroma(
@@ -30,16 +32,38 @@ def embed_in_batches(docs, batch_size=10, delay=0.2):
         database="default_database"
     )
 
+    total_vectors = 0
+
     for i in range(0, len(docs), batch_size):
-        batch = docs[i:i+batch_size]
+        batch = docs[i:i + batch_size]
+
+        # Tạo ID rõ ràng cho từng vector
+        batch_ids = [f"vector_{i + j}" for j in range(len(batch))]
+
         try:
-            vector_store.add_documents(batch)
-            print(f" Batch {i//batch_size + 1} stored successfully")
+            vector_store.add_documents(
+                documents=batch,
+                ids=batch_ids
+            )
+
+            print(f"\n Batch {i // batch_size + 1}")
+            print(f"  Number of vectors in batch: {len(batch_ids)}")
+            print(f"  Vector IDs:")
+
+            for vid, doc in zip(batch_ids, batch):
+                print(f"   - {vid} | source: {doc.metadata.get('source', 'unknown')}")
+
+            total_vectors += len(batch_ids)
+
         except Exception as e:
-            print(f" Error embedding batch {i//batch_size + 1}: {e}")
+            print(f" Error embedding batch {i // batch_size + 1}: {e}")
 
         sleep(delay)
 
+    print("\n Ingestion summary")
+    print(f" Total vectors stored: {total_vectors}")
+
+
 if __name__ == "__main__":
     embed_in_batches(docs)
-    print("Data ingestion complete!")
+    print("\n Data ingestion complete!")
