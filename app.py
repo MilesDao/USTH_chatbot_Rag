@@ -14,12 +14,20 @@ st.title("USTH RAG Chatbot")
 if "chat" not in st.session_state:
     st.session_state.chat = []
 
+# Sidebar
+with st.sidebar:
+    st.header("Cài đặt")
+    google_api_key = st.text_input("Google API Key", type="password")
+
 # User input
 user_input = st.chat_input("Nhập câu hỏi...")
 
 if user_input:
-    with st.spinner("Vui lòng đợi trong giây lát..."):
-        answer, results = rag_answer(user_input)
+    if not google_api_key:
+        st.warning("Vui lòng nhập Google API Key ở sidebar để tiếp tục.")
+    else:
+        with st.spinner("Vui lòng đợi trong giây lát..."):
+            answer, results = rag_answer(user_input, api_key=google_api_key)
 
     st.session_state.chat.append({
         "question": user_input,

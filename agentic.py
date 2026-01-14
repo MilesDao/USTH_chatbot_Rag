@@ -10,9 +10,6 @@ load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 
-# ======================
-# Context Gate (GENERAL)
-# ======================
 def is_context_usable(docs, min_chunks: int = 1, min_chars: int = 200):
     """
     Gate logic KHÔNG dựa score.
@@ -27,9 +24,8 @@ def is_context_usable(docs, min_chunks: int = 1, min_chars: int = 200):
     return total_chars >= min_chars
 
 
-# ======================
 # Build Context
-# ======================
+
 def build_context(docs):
     blocks = []
 
@@ -44,10 +40,7 @@ def build_context(docs):
     return "\n\n".join(blocks)
 
 
-# ======================
-# RAG Chain
-# ======================
-def build_rag_chain():
+def build_rag_chain(api_key: str = None):
     prompt = ChatPromptTemplate.from_template("""
 Bạn là một trợ lý học tập đáng tin cậy.
 
@@ -69,34 +62,32 @@ Hãy trả lời bằng tiếng Việt, rõ ràng, chính xác và trung thực.
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
         temperature=0.5,
-        max_tokens=1000
+        max_tokens=1000,
+        google_api_key=api_key
     )
 
     return prompt | llm | StrOutputParser()
 
 
-# ======================
 # Agentic RAG (GENERAL)
-# ======================
-def rag_answer(question: str, k: int = 5):
-    # 1️⃣ Retrieve (WITH SCORE)
+
+def rag_answer(question: str, k: int = 5, api_key: str = None):
+
     results = retrieve_with_score(question, k=k)
     
-    # Unpack docs for context building
+
     docs = [doc for doc, score in results]
 
-    # 2️⃣ Gate
     if not is_context_usable(docs):
         return (
             "Em không tìm thấy đủ thông tin trong tài liệu để trả lời câu hỏi này.",
             results
         )
 
-    # 3️⃣ Build context
     context = build_context(docs)
 
-    # 4️⃣ LLM
-    chain = build_rag_chain()
+# LLM
+    chain = build_rag_chain(api_key=api_key)
     answer = chain.invoke({
         "question": question,
         "context": context
@@ -105,9 +96,6 @@ def rag_answer(question: str, k: int = 5):
     return answer, results
 
 
-# ======================
-# Debug run
-# ======================
 if __name__ == "__main__":
     question = "CÁC CÂU LẠC BỘ TẠI USTH"
     answer, results = rag_answer(question)
