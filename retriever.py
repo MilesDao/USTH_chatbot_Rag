@@ -1,4 +1,5 @@
 import re
+from typing import List, Tuple, Any
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
@@ -33,18 +34,21 @@ def get_vectorstore():
     return vectorstore
 
 
-def retrieve_with_debug(query: str, k: int = 5):
+
+
+
+def retrieve_with_score(query: str, k: int = 5) -> List[Tuple[Any, float]]:
     """
-    Chỉ retrieve chunk – KHÔNG score, KHÔNG lọc
+    Retrieve chunk kèm score
     """
     vectorstore = get_vectorstore()
 
-    docs = vectorstore.similarity_search(
+    docs_and_scores = vectorstore.similarity_search_with_score(
         e5_query(query),
         k=k,
     )
 
-    return docs
+    return docs_and_scores
 
 
 def get_retriever(k: int = 5):
@@ -64,16 +68,17 @@ def get_retriever(k: int = 5):
 # -------- Debug nhanh --------
 if __name__ == "__main__":
     query = "giảng viên Việt Nam và quốc tế"
-    results = retrieve_with_debug(query, k=6)
+    # results = retrieve_with_debug(query, k=6)
+    results_with_score = retrieve_with_score(query, k=6)
 
     print(f"\nQuery: {query}")
     print("=" * 60)
 
-    if not results:
+    if not results_with_score:
         print("Không retrieve được chunk nào")
     else:
-        for i, doc in enumerate(results):
-            print(f"\nChunk {i+1}")
+        for i, (doc, score) in enumerate(results_with_score):
+            print(f"\nChunk {i+1} (Score: {score:.4f})")
             print(f" Page: {doc.metadata.get('page', 'N/A')}")
             print(f" Chunk ID: {doc.metadata.get('chunk_id', 'N/A')}")
             print(f" Text preview:\n{doc.page_content[:500]}")

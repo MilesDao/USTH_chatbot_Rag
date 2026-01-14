@@ -4,7 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-from retriever import retrieve_with_debug
+from retriever import retrieve_with_score
 
 load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
@@ -68,8 +68,8 @@ Hãy trả lời bằng tiếng Việt, rõ ràng, chính xác và trung thực.
 
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
-        temperature=0.4,
-        max_tokens=800
+        temperature=0.5,
+        max_tokens=1000
     )
 
     return prompt | llm | StrOutputParser()
@@ -79,14 +79,17 @@ Hãy trả lời bằng tiếng Việt, rõ ràng, chính xác và trung thực.
 # Agentic RAG (GENERAL)
 # ======================
 def rag_answer(question: str, k: int = 5):
-    # 1️⃣ Retrieve (NO SCORE)
-    docs = retrieve_with_debug(question, k=k)
+    # 1️⃣ Retrieve (WITH SCORE)
+    results = retrieve_with_score(question, k=k)
+    
+    # Unpack docs for context building
+    docs = [doc for doc, score in results]
 
     # 2️⃣ Gate
     if not is_context_usable(docs):
         return (
             "Em không tìm thấy đủ thông tin trong tài liệu để trả lời câu hỏi này.",
-            docs
+            results
         )
 
     # 3️⃣ Build context
@@ -99,23 +102,24 @@ def rag_answer(question: str, k: int = 5):
         "context": context
     })
 
-    return answer, docs
+    return answer, results
 
 
 # ======================
 # Debug run
 # ======================
 if __name__ == "__main__":
-    question = "USTH Chatbot là gì"
-    answer, docs = rag_answer(question)
+    question = "CÁC CÂU LẠC BỘ TẠI USTH"
+    answer, results = rag_answer(question)
 
     print("\n=== ANSWER ===")
     print(answer)
 
     print("\n=== RETRIEVED CHUNKS ===")
-    for doc in docs:
+    for doc, score in results:
         print(
-            f"\nchunk_id={doc.metadata.get('chunk_id', 'N/A')} | "
+            f"\nScore: {score:.4f} | "
+            f"chunk_id={doc.metadata.get('chunk_id', 'N/A')} | "
             f"page={doc.metadata.get('page', 'N/A')} | "
             f"source={doc.metadata.get('source', 'N/A')}"
         )
