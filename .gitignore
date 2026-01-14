@@ -75,5 +75,5 @@ package-lock.json
 # ChromaDB
 chroma_db/
 .chroma_db/
-
-*chromadb*/
+*chroma_db/
+chromadb/
