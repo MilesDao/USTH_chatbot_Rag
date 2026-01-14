@@ -28,8 +28,6 @@ def get_vectorstore():
         collection_name=COLLECTION_NAME,
         persist_directory=PERSIST_DIR,
         embedding_function=embeddings,
-        tenant="default_tenant",
-        database="default_database",
     )
     return vectorstore
 

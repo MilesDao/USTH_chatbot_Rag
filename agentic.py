@@ -48,7 +48,6 @@ QUY TẮC BẮT BUỘC:
 - CHỈ sử dụng thông tin có trong Context.
 - KHÔNG suy đoán.
 - KHÔNG dùng kiến thức bên ngoài.
-- Nếu Context không đủ để trả lời → nói rõ là không tìm thấy thông tin.
 
 Context:
 {context}
