@@ -72,5 +72,8 @@ package-lock.json
 !data/README.md
 !datasets/README.md
 
-#chromadb
+# ChromaDB
 chroma_db/
+.chroma_db/
+
+*chromadb*/
