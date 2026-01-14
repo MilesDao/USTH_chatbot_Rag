@@ -9,43 +9,46 @@ embeddings_model = HuggingFaceEmbeddings(
     model_name="intfloat/multilingual-e5-base"
 )
 
-loader = PyPDFDirectoryLoader("data")
-documents = loader.load()
-
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=500,
-    chunk_overlap=50
-)
-docs = text_splitter.split_documents(documents)
-
-for idx, doc in enumerate(docs):
-    doc.metadata["chunk_id"] = idx
-
-
-    if "source" in doc.metadata:
-        doc.metadata["source"] = doc.metadata["source"].split("/")[-1]
-
-
-    doc.metadata["page"] = doc.metadata.get("page", "unknown")
-
 PERSIST_DIR = "chroma_db"
 COLLECTION_NAME = "langchain"
+
+def load_and_split_data():
+    print("Loading PDFs from data/ ...")
+    loader = PyPDFDirectoryLoader("data")
+    documents = loader.load()
+
+    if not documents:
+        print("No documents found in data/")
+        return []
+
+    print(f"Loaded {len(documents)} documents.")
+
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=500,
+        chunk_overlap=50
+    )
+    docs = text_splitter.split_documents(documents)
+
+    for idx, doc in enumerate(docs):
+        doc.metadata["chunk_id"] = idx
+        if "source" in doc.metadata:
+            doc.metadata["source"] = doc.metadata["source"].split("/")[-1]
+        doc.metadata["page"] = doc.metadata.get("page", "unknown")
+    
+    print(f"Split into {len(docs)} chunks.")
+    return docs
 
 def embed_in_batches(docs, batch_size=10, delay=0.2):
     vector_store = Chroma(
         collection_name=COLLECTION_NAME,
         persist_directory=PERSIST_DIR,
         embedding_function=embeddings_model,
-        tenant="default_tenant",
-        database="default_database"
     )
 
     total_vectors = 0
 
     for i in range(0, len(docs), batch_size):
         batch = docs[i:i + batch_size]
-
-
         batch_ids = [f"chunk_{doc.metadata['chunk_id']}" for doc in batch]
 
         try:
@@ -74,7 +77,13 @@ def embed_in_batches(docs, batch_size=10, delay=0.2):
     print("\n Ingestion summary")
     print(f" Total vectors stored: {total_vectors}")
 
+def ingest():
+    docs = load_and_split_data()
+    if docs:
+        embed_in_batches(docs)
+    else:
+        print("Nothing to ingest.")
 
 if __name__ == "__main__":
-    embed_in_batches(docs)
+    ingest()
     print("\n Data ingestion complete!")

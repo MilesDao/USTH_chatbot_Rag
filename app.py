@@ -1,11 +1,22 @@
+import os
 import streamlit as st
 from agentic import rag_answer
+from ingestion import ingest
 
 st.set_page_config(
     page_title="USTH RAG Chatbot",
     page_icon="🤖",
     layout="wide"
 )
+
+# Auto-ingestion check
+if not os.path.exists("chroma_db"):
+    with st.spinner("Đang khởi tạo cơ sở dữ liệu lần đầu (có thể mất vài phút)..."):
+        try:
+            ingest()
+            st.success("Đã khởi tạo xong cơ sở dữ liệu!")
+        except Exception as e:
+            st.error(f"Lỗi khi khởi tạo dữ liệu: {e}")
 
 st.title("USTH RAG Chatbot")
 

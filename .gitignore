@@ -71,3 +71,6 @@ package-lock.json
 # Optional: keep example data
 !data/README.md
 !datasets/README.md
+
+#chromadb
+chroma_db/
