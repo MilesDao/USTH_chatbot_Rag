@@ -38,10 +38,14 @@ def load_and_split_data():
     print(f"Split into {len(docs)} chunks.")
     return docs
 
+import chromadb
+
 def embed_in_batches(docs, batch_size=10, delay=0.2):
+    client = chromadb.PersistentClient(path=PERSIST_DIR)
+    
     vector_store = Chroma(
+        client=client,
         collection_name=COLLECTION_NAME,
-        persist_directory=PERSIST_DIR,
         embedding_function=embeddings_model,
     )
 

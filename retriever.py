@@ -18,15 +18,19 @@ def e5_query(text: str) -> str:
     return f"query: {normalize_text(text)}"
 
 
+import chromadb
+
 def get_vectorstore():
     embeddings = HuggingFaceEmbeddings(
         model_name="intfloat/multilingual-e5-base",
         encode_kwargs={"normalize_embeddings": True},
     )
 
+    client = chromadb.PersistentClient(path=PERSIST_DIR)
+
     vectorstore = Chroma(
+        client=client,
         collection_name=COLLECTION_NAME,
-        persist_directory=PERSIST_DIR,
         embedding_function=embeddings,
     )
     return vectorstore
