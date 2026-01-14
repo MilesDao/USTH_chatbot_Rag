@@ -125,7 +125,12 @@ What happens:
 ```bash 
 streamlit run app.py           # http://localhost:8501
 ```
-
+4.3 Quick for demo testing 
+<h4 align="center">
+    <p>
+        <a href="https://usthchatbotrag.streamlit.app/">USTH-Chatbot</a>
+    <p>
+</h4>
 ### 5. Architecture Diagram
 <p align="center">
   <img src="assets/USTH_Chatbot_RAG.drawio.png" width="400">
