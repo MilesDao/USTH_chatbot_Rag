@@ -67,10 +67,8 @@ def get_retriever(k: int = 5):
     )
 
 
-# -------- Debug nhanh --------
 if __name__ == "__main__":
     query = "giảng viên Việt Nam và quốc tế"
-    # results = retrieve_with_debug(query, k=6)
     results_with_score = retrieve_with_score(query, k=6)
 
     print(f"\nQuery: {query}")
