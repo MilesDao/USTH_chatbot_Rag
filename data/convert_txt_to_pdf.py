@@ -5,7 +5,7 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-txt_path = Path("output/docai_text/merged_ALLfile.txt")
+txt_path = Path("finaldata.txt")
 
 script_dir = Path(__file__).parent.resolve()
 pdf_path = script_dir / "datafinal.pdf"
