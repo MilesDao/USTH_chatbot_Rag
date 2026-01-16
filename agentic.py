@@ -97,8 +97,8 @@ def rag_answer(question: str, k: int = 5, api_key: str = None):
 
 if __name__ == "__main__":
     question = "CÁC CÂU LẠC BỘ TẠI USTH"
-    answer, results = rag_answer(question)
-
+    apiKey = os.getenv("GOOGLE_API_KEY")
+    answer, results = rag_answer(question, 5, apiKey)
     print("\n=== ANSWER ===")
     print(answer)
 
