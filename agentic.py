@@ -7,7 +7,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from retriever import retrieve_with_score
 
 load_dotenv()
-# os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
 def is_context_usable(docs, min_chunks: int = 1, min_chars: int = 200):
     """
@@ -98,7 +98,6 @@ if __name__ == "__main__":
     question = "CÁC CÂU LẠC BỘ TẠI USTH"
     apiKey = os.getenv("GOOGLE_API_KEY")
     answer, results = rag_answer(question, 5, apiKey)
-
     print("\n=== ANSWER ===")
     print(answer)
 
