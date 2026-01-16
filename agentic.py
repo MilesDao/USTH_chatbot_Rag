@@ -9,7 +9,6 @@ from retriever import retrieve_with_score
 load_dotenv()
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 
-
 def is_context_usable(docs, min_chunks: int = 1, min_chars: int = 200):
     """
     Gate logic KHÔNG dựa score.
@@ -61,7 +60,7 @@ Hãy trả lời bằng tiếng Việt, rõ ràng, chính xác và trung thực.
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
         temperature=0.5,
-        max_tokens=1000,
+        max_tokens=1200,
         google_api_key=api_key
     )
 
