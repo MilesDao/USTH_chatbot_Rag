@@ -145,7 +145,7 @@ def run_evaluation():
     correctness_metric = GEval(
         name="Answer Correctness",
         criteria="Determine whether the actual output is factually correct based on the expected output.",
-        # Quan trọng: Bảo nó so sánh Actual Output với Expected Output
+        
         evaluation_params=[LLMTestCaseParams.ACTUAL_OUTPUT, LLMTestCaseParams.EXPECTED_OUTPUT],
         model=gemini_judge,
         threshold=0.7
