@@ -117,7 +117,7 @@ def run_evaluation():
         try:
             actual_output, retrieval_context = generate_rag_response(record['input'])
             print(f"-> Generated: {actual_output[:100]}...")
-            
+
             test_case = LLMTestCase(
                 input=record['input'],
                 actual_output=actual_output,
