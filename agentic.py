@@ -9,6 +9,9 @@ from langchain_core.documents import Document
 
 from retriever import E5Retriever
 
+from deepeval.metrics import ContextualPrecisionMetric, GEval
+from deepeval.test_case import LLMTestCase, LLMTestCaseParams
+from deepeval.models.base_model import DeepEvalBaseLLM
 
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
@@ -125,22 +128,118 @@ def rag_answer(
     return answer, docs_with_scores
 
 
-# =====================
-# DEBUG
-# =====================
-if __name__ == "__main__":
-    question = "có bao nhiêu loại học bổng USTH"
 
-    answer, results = rag_answer(question)
 
-    print("\n=== ANSWER ===")
-    print(answer)
-
-    print("\n=== RETRIEVED CHUNKS ===")
-    for doc, score in results:
-        print(
-            f"\nScore: {score:.4f} | "
-            f"chunk_id={doc.metadata.get('chunk_id', 'N/A')} | "
-            f"source={doc.metadata.get('source', 'N/A')}"
+class GeminiJudge(DeepEvalBaseLLM):
+    def __init__(self):
+        # Lấy API KEY trực tiếp từ biến môi trường
+        api_key = os.getenv("GOOGLE_API_KEY")
+        
+        # Truyền key vào tham số google_api_key
+        self.model = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash", 
+            temperature=0,
+            google_api_key=api_key 
         )
-        print(doc.page_content[:400], "...")
+    def load_model(self): return self.model
+    def generate(self, prompt): return self.model.invoke(prompt).content
+    async def a_generate(self, prompt): return (await self.model.ainvoke(prompt)).content
+    def get_model_name(self): return "gemini-2.5-flash"
+
+def quick_evaluate(query, agentic_result, expected_output, expected_context):
+    """
+    query: Câu hỏi
+    agentic_result: Tuple (answer_text, list_of_docs) trả về từ hàm rag_answer
+    expected_output: Câu trả lời mẫu (String)
+    expected_context: List các ý chính trong context mẫu (List[String])
+    """
+    # --- BẮT ĐẦU THÂN HÀM (Tất cả phải thụt vào) ---
+    
+    actual_output, docs = agentic_result
+    
+    # Chuyển đổi docs từ agentic thành list string cho deepeval
+    # Kiểm tra kỹ nếu docs rỗng để tránh lỗi
+    if docs and isinstance(docs, list):
+        retrieval_context = [d[0].page_content for d in docs]
+    else:
+        retrieval_context = []
+
+    # Tạo test case
+    test_case = LLMTestCase(
+        input=query,
+        actual_output=actual_output,
+        retrieval_context=retrieval_context,
+        expected_output=expected_output,
+        expected_context=expected_context
+    )
+
+    judge = GeminiJudge()
+
+    # Metric 1: Contextual Precision
+    precision = ContextualPrecisionMetric(threshold=0.5, model=judge, include_reason=True)
+    
+    # Metric 2: Correctness
+    correctness = GEval(
+        name="Correctness",
+        criteria="Is the actual output factually consistent with the expected output?",
+        evaluation_params=[LLMTestCaseParams.ACTUAL_OUTPUT, LLMTestCaseParams.EXPECTED_OUTPUT],
+        model=judge,
+        threshold=0.5
+    )
+
+    print(f"\n--- ĐANG CHẤM ĐIỂM: {query} ---")
+    
+    # Đo lường
+    precision.measure(test_case)
+    print(f"✅ Text Chunk Precision: {precision.score} (Reason: {precision.reason})")
+
+    correctness.measure(test_case)
+    print(f"✅ Answer Correctness:   {correctness.score} (Reason: {correctness.reason})")
+
+# ==========================================
+# CÁCH DÙNG (Sửa lại phần main cũ của bạn)
+# ==========================================
+# ==========================================
+# CÁCH DÙNG (CHẠY THỬ VÀ ĐÁNH GIÁ)
+# ==========================================
+if __name__ == "__main__":
+    # 1. Định nghĩa câu hỏi và đáp án chuẩn (Golden Data)
+    question = "Điều kiện thi cải thiện là gì?"
+    
+    # Đáp án kỳ vọng
+    expected_answer = "Sinh viên phải có điểm thi kết thúc học phần từ 10.0/20.0 trở lên mới được đăng ký thi cải thiện."
+    
+    # Context kỳ vọng (Ý chính cần có trong tài liệu)
+    expected_chunks = [
+        "Students who have the final exam score of 10.0 or higher are allowed to register for a score improvement examination"
+    ]
+
+    print(f"❓ Câu hỏi: {question}")
+    print("🤖 Đang chạy Agentic RAG...")
+    
+    try:
+        # 2. Gọi hàm RAG
+        # result = (answer_string, list_of_docs)
+        result = rag_answer(question) 
+        
+        actual_answer, retrieved_docs = result
+
+        # --- IN KẾT QUẢ ĐỂ KIỂM TRA ---
+        print("\n" + "="*50)
+        print("💡 CÂU TRẢ LỜI CỦA AI:")
+        print(actual_answer)
+        print("="*50)
+
+        print(f"\n📚 TÌM THẤY {len(retrieved_docs)} TEXT CHUNKS:")
+        for i, (doc, score) in enumerate(retrieved_docs):
+            print(f"   [{i+1}] Score: {score:.4f} | Content: {doc.page_content[:100]}...") 
+            # (In 100 ký tự đầu của mỗi chunk để dễ nhìn)
+
+        # 3. GỌI HÀM CHẤM ĐIỂM
+        print("\n" + "-"*20 + " BẮT ĐẦU CHẤM ĐIỂM " + "-"*20)
+        quick_evaluate(question, result, expected_answer, expected_chunks)
+        
+    except Exception as e:
+        print(f"❌ Có lỗi xảy ra: {e}")
+        import traceback
+        traceback.print_exc()
