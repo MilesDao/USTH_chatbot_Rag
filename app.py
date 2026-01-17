@@ -69,7 +69,6 @@ for turn in st.session_state.chat:
                     st.markdown(
                         f"""
 - **chunk_id:** `{doc.metadata.get('chunk_id', 'N/A')}`
-- **page:** `{doc.metadata.get('page', 'N/A')}`
 - **source:** `{doc.metadata.get('source', 'N/A')}`
 
 {doc.page_content}
