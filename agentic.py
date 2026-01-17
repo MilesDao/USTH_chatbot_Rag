@@ -1,44 +1,59 @@
 import os
 from dotenv import load_dotenv
+from typing import List, Tuple
+
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.documents import Document
 
-from retriever import retrieve_with_score
+from retriever import E5Retriever
+
 
 load_dotenv()
-os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
-def is_context_usable(docs, min_chunks: int = 1, min_chars: int = 200):
+
+# CONTEXT GATE (CÓ RELEVANCE)
+
+def is_context_usable(docs_with_scores: List[Tuple[Document, float]],
+    min_chunks: int = 1,
+    min_chars: int = 100,
+    max_score: float = 0.6,
+) -> bool:
     """
-    Gate logic KHÔNG dựa score.
-    Chỉ kiểm tra:
-    - Có đủ chunk?
-    - Context có đủ nội dung chữ?
+    Context usable nếu:
+    - Có >= min_chunks
+    - Tổng ký tự >= min_chars
+    - Ít nhất 1 chunk có score đủ tốt
     """
-    if not docs or len(docs) < min_chunks:
+    if not docs_with_scores or len(docs_with_scores) < min_chunks:
         return False
 
-    total_chars = sum(len(doc.page_content) for doc in docs)
-    return total_chars >= min_chars
+    total_chars = sum(len(doc.page_content) for doc, _ in docs_with_scores)
+    if total_chars < min_chars:
+        return False
 
+    best_score = min(score for _, score in docs_with_scores)
+    return best_score <= max_score
 
 # Build Context
 
-def build_context(docs):
+def build_context(docs_with_scores: List[Tuple[Document, float]]) -> str:
     blocks = []
 
-    for doc in docs:
+    for doc, score in docs_with_scores:
         blocks.append(
             f"[chunk_id={doc.metadata.get('chunk_id', 'N/A')}, "
-            f"source={doc.metadata.get('source', 'N/A')}]\n"
+            f"source={doc.metadata.get('source', 'N/A')}, "
+            f"score={score:.4f}]\n"
             f"{doc.page_content}"
         )
 
     return "\n\n".join(blocks)
 
 
-def build_rag_chain(api_key: str = None):
+def build_rag_chain(api_key: str ):
     prompt = ChatPromptTemplate.from_template("""
 Bạn là Trợ lý AI Tư vấn Tuyển sinh và Hỗ trợ Sinh viên của Trường Đại học Khoa học và Công nghệ Hà Nội (USTH - Đại học Việt Pháp).
     
@@ -82,36 +97,42 @@ Hãy trả lời bằng tiếng Việt, rõ ràng, chính xác và trung thực.
 
 
 # Agentic RAG (GENERAL)
+def rag_answer(
+    question: str,
+    k: int = 8,
+    api_key: str = GOOGLE_API_KEY,
+):
+    retriever = E5Retriever(k=k)
 
-def rag_answer(question: str, k: int = 5, api_key: str = None):
+    docs_with_scores = retriever.retrieve_with_score(question)
 
-    results = retrieve_with_score(question, k=k)
-    
-
-    docs = [doc for doc, score in results]
-
-    if not is_context_usable(docs):
+    if not is_context_usable(docs_with_scores):
         return (
             "Mình không tìm thấy đủ thông tin trong tài liệu để trả lời câu hỏi này.",
-            results
+            docs_with_scores,
         )
 
-    context = build_context(docs)
+    context = build_context(docs_with_scores)
 
-# LLM
     chain = build_rag_chain(api_key=api_key)
-    answer = chain.invoke({
-        "question": question,
-        "context": context
-    })
+    answer = chain.invoke(
+        {
+            "question": question,
+            "context": context,
+        }
+    )
 
-    return answer, results
+    return answer, docs_with_scores
 
 
+# =====================
+# DEBUG
+# =====================
 if __name__ == "__main__":
-    question = "CÁC CÂU LẠC BỘ TẠI USTH"
-    apiKey = os.getenv("GOOGLE_API_KEY")
-    answer, results = rag_answer(question, 5, apiKey)
+    question = "có bao nhiêu loại học bổng USTH"
+
+    answer, results = rag_answer(question)
+
     print("\n=== ANSWER ===")
     print(answer)
 
@@ -122,4 +143,4 @@ if __name__ == "__main__":
             f"chunk_id={doc.metadata.get('chunk_id', 'N/A')} | "
             f"source={doc.metadata.get('source', 'N/A')}"
         )
-        print(doc.page_content[:500], "...")
+        print(doc.page_content[:400], "...")

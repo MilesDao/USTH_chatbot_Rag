@@ -1,5 +1,10 @@
 import os
 import streamlit as st
+import importlib
+import agentic
+import retriever
+importlib.reload(retriever)
+importlib.reload(agentic)
 from agentic import rag_answer
 from ingestion import ingest
 
@@ -38,7 +43,8 @@ if user_input:
         st.warning("Vui lòng nhập Google API Key ở sidebar để tiếp tục.")
     else:
         with st.spinner("Vui lòng đợi trong giây lát..."):
-            answer, results = rag_answer(user_input, api_key=google_api_key)
+            # Explicitly pass k=8 to match agentic/retriever logic
+            answer, results = rag_answer(user_input, api_key=google_api_key, k=8)
 
     st.session_state.chat.append({
         "question": user_input,
@@ -74,4 +80,10 @@ for turn in st.session_state.chat:
 {doc.page_content}
 """
                     )
+
+if __name__ == "__main__":
+    # check if running with streamlit
+    import sys
+    if "streamlit" not in sys.modules:
+        print("Scrip này là ứng dụng Streamlit. Vui lòng chạy bằng lệnh:\nstreamlit run app.py")
 
