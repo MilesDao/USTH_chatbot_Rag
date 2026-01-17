@@ -92,7 +92,7 @@ def rag_answer(question: str, k: int = 5, api_key: str = None):
 
     if not is_context_usable(docs):
         return (
-            "Em không tìm thấy đủ thông tin trong tài liệu để trả lời câu hỏi này.",
+            "Mình không tìm thấy đủ thông tin trong tài liệu để trả lời câu hỏi này.",
             results
         )
 
