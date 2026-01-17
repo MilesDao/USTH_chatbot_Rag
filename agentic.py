@@ -31,7 +31,6 @@ def build_context(docs):
     for doc in docs:
         blocks.append(
             f"[chunk_id={doc.metadata.get('chunk_id', 'N/A')}, "
-            f"page={doc.metadata.get('page', 'N/A')}, "
             f"source={doc.metadata.get('source', 'N/A')}]\n"
             f"{doc.page_content}"
         )
@@ -107,7 +106,6 @@ if __name__ == "__main__":
         print(
             f"\nScore: {score:.4f} | "
             f"chunk_id={doc.metadata.get('chunk_id', 'N/A')} | "
-            f"page={doc.metadata.get('page', 'N/A')} | "
             f"source={doc.metadata.get('source', 'N/A')}"
         )
         print(doc.page_content[:500], "...")

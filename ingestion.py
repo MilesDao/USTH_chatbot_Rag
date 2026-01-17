@@ -1,6 +1,6 @@
 from time import sleep
 
-from langchain_community.document_loaders import PyPDFDirectoryLoader
+from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -13,12 +13,12 @@ PERSIST_DIR = "chroma_db"
 COLLECTION_NAME = "langchain"
 
 def load_and_split_data():
-    print("Loading PDFs from data/ ...")
-    loader = PyPDFDirectoryLoader("data")
+    print("Loading data/finaldata.txt ...")
+    loader = TextLoader("data/finaldata.txt", encoding="utf-8")
     documents = loader.load()
 
     if not documents:
-        print("No documents found in data/")
+        print("No documents found in data/finaldata.txt")
         return []
 
     print(f"Loaded {len(documents)} documents.")
@@ -33,7 +33,6 @@ def load_and_split_data():
         doc.metadata["chunk_id"] = idx
         if "source" in doc.metadata:
             doc.metadata["source"] = doc.metadata["source"].split("/")[-1]
-        doc.metadata["page"] = doc.metadata.get("page", "unknown")
     
     print(f"Split into {len(docs)} chunks.")
     return docs
@@ -67,8 +66,7 @@ def embed_in_batches(docs, batch_size=10, delay=0.2):
             for doc in batch:
                 print(
                     f"   - chunk_id={doc.metadata['chunk_id']}, "
-                    f"source={doc.metadata['source']}, "
-                    f"page={doc.metadata['page']}"
+                    f"source={doc.metadata['source']} "
                 )
 
             total_vectors += len(batch)

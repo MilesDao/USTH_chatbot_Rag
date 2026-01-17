@@ -79,6 +79,5 @@ if __name__ == "__main__":
     else:
         for i, (doc, score) in enumerate(results_with_score):
             print(f"\nChunk {i+1} (Score: {score:.4f})")
-            print(f" Page: {doc.metadata.get('page', 'N/A')}")
             print(f" Chunk ID: {doc.metadata.get('chunk_id', 'N/A')}")
             print(f" Text preview:\n{doc.page_content[:500]}")
