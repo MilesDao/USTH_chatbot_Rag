@@ -12,6 +12,8 @@ embeddings_model = HuggingFaceEmbeddings(
 PERSIST_DIR = "chroma_db"
 COLLECTION_NAME = "langchain"
 
+from retriever import normalize_text
+
 def load_and_split_data():
     print("Loading data/finaldata.txt ...")
     loader = TextLoader("data/finaldata.txt", encoding="utf-8")
@@ -24,8 +26,8 @@ def load_and_split_data():
     print(f"Loaded {len(documents)} documents.")
 
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=50
+        chunk_size=600,
+        chunk_overlap=100
     )
     docs = text_splitter.split_documents(documents)
 
@@ -33,6 +35,9 @@ def load_and_split_data():
         doc.metadata["chunk_id"] = idx
         if "source" in doc.metadata:
             doc.metadata["source"] = doc.metadata["source"].split("/")[-1]
+        
+        # Apply normalization and prefix for E5 model
+        doc.page_content = f"passage: {normalize_text(doc.page_content)}"
     
     print(f"Split into {len(docs)} chunks.")
     return docs
