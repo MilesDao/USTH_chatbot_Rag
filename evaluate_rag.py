@@ -5,19 +5,19 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# Import DeepEval & GEval
+
 from deepeval import evaluate
 from deepeval.metrics import ContextualPrecisionMetric, FaithfulnessMetric, GEval
-from deepeval.test_case import LLMTestCase, LLMTestCaseParams # <--- Import thêm Params
+from deepeval.test_case import LLMTestCase, LLMTestCaseParams 
 from deepeval.models.base_model import DeepEvalBaseLLM
 
 from retriever import retrieve_with_score
 
 load_dotenv()
 
-# ==========================================
+
 # 1. CẤU HÌNH JUDGE
-# ==========================================
+
 class GeminiJudge(DeepEvalBaseLLM):
     def __init__(self, model_name="gemini-2.5-flash"):
         self.model_name = model_name
@@ -38,9 +38,9 @@ class GeminiJudge(DeepEvalBaseLLM):
 
 gemini_judge = GeminiJudge()
 
-# ==========================================
+
 # 2. HÀM CHẠY RAG
-# ==========================================
+
 def generate_rag_response(question: str):
     results = retrieve_with_score(question, k=5)
     
@@ -63,9 +63,9 @@ def generate_rag_response(question: str):
     
     return actual_output, retrieval_context
 
-# ==========================================
+
 # 3. GOLDEN DATASET
-# ==========================================
+
 golden_dataset = [
     {
         "input": "Điều kiện để sinh viên được đăng ký thi cải thiện điểm là gì?",
@@ -101,9 +101,9 @@ golden_dataset = [
     }
 ]
 
-# ==========================================
+
 # 4. CHẠY ĐÁNH GIÁ (Dùng GEval cho Correctness)
-# ==========================================
+
 def run_evaluation():
     if not os.getenv("GOOGLE_API_KEY"):
         print(" LỖI: Chưa tìm thấy GOOGLE_API_KEY.")
@@ -141,8 +141,7 @@ def run_evaluation():
         threshold=0.7, model=gemini_judge, include_reason=True
     )
 
-    # 3. Answer Correctness (Tự định nghĩa bằng GEval)
-    # Đây là cách "Standard" của DeepEval để tạo Custom Metric
+    
     correctness_metric = GEval(
         name="Answer Correctness",
         criteria="Determine whether the actual output is factually correct based on the expected output.",
