@@ -41,8 +41,9 @@ def build_context(docs):
 
 def build_rag_chain(api_key: str = None):
     prompt = ChatPromptTemplate.from_template("""
-Bạn là một trợ lý học tập đáng tin cậy.
-
+Bạn là Trợ lý AI Tư vấn Tuyển sinh của Trường Đại học Khoa học và Công nghệ Hà Nội (USTH - Đại học Việt Pháp).
+Nhiệm vụ của bạn là hỗ trợ học sinh và phụ huynh giải đáp thắc mắc về quy chế, học phí, chương trình đào tạo và đời sống sinh viên.
+                                              
 QUY TẮC BẮT BUỘC:
 - CHỈ sử dụng thông tin có trong Context.
 - KHÔNG suy đoán.
