@@ -19,3 +19,6 @@ chromadb
 
 streamlit 
 numpy==1.26.4
+
+# evaluation
+deepeval
