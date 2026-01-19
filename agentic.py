@@ -16,6 +16,13 @@ from deepeval.models.base_model import DeepEvalBaseLLM
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
+# Disable DeepEval telemetry to prevent "Task destroyed but pending" errors on exit
+os.environ["DEEPEVAL_TELEMETRY_OPT_OUT"] = "YES"
+
+import warnings
+warnings.filterwarnings("ignore", category=RuntimeWarning)
+
+
 
 # CONTEXT GATE (CÓ RELEVANCE)
 
@@ -195,6 +202,44 @@ def quick_evaluate(query, agentic_result, expected_output, expected_context):
 
     correctness.measure(test_case)
     print(f"✅ Answer Correctness:   {correctness.score} (Reason: {correctness.reason})")
+
+def evaluate_rag_answer(query, actual_answer, retrieved_docs, expected_output, expected_context):
+    """
+    Evaluates the RAG answer and returns a dictionary of metrics.
+    """
+    if retrieved_docs and isinstance(retrieved_docs, list):
+        retrieval_context = [d[0].page_content for d in retrieved_docs]
+    else:
+        retrieval_context = []
+
+    test_case = LLMTestCase(
+        input=query,
+        actual_output=actual_answer,
+        retrieval_context=retrieval_context,
+        expected_output=expected_output,
+        expected_context=expected_context
+    )
+
+    judge = GeminiJudge()
+
+    precision = ContextualPrecisionMetric(threshold=0.5, model=judge, include_reason=True)
+    correctness = GEval(
+        name="Correctness",
+        criteria="Is the actual output factually consistent with the expected output?",
+        evaluation_params=[LLMTestCaseParams.ACTUAL_OUTPUT, LLMTestCaseParams.EXPECTED_OUTPUT],
+        model=judge,
+        threshold=0.5
+    )
+
+    precision.measure(test_case)
+    correctness.measure(test_case)
+
+    return {
+        "precision_score": precision.score,
+        "precision_reason": precision.reason,
+        "correctness_score": correctness.score,
+        "correctness_reason": correctness.reason
+    }
 
 # ==========================================
 # CÁCH DÙNG (Sửa lại phần main cũ của bạn)
