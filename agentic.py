@@ -139,6 +139,7 @@ def rag_answer(
 
 class GeminiJudge(DeepEvalBaseLLM):
     def __init__(self):
+        
         api_key = os.getenv("GOOGLE_API_KEY")
         
         
@@ -159,7 +160,7 @@ def quick_evaluate(query, agentic_result, expected_output, expected_context):
     expected_output: Câu trả lời mẫu (String)
     expected_context: List các ý chính trong context mẫu (List[String])
     """
-
+    
     
     actual_output, docs = agentic_result
     
@@ -197,10 +198,10 @@ def quick_evaluate(query, agentic_result, expected_output, expected_context):
     
     # Đo lường
     precision.measure(test_case)
-    print(f"✅ Text Chunk Precision: {precision.score} (Reason: {precision.reason})")
+    print(f" Text Chunk Precision: {precision.score} (Reason: {precision.reason})")
 
     correctness.measure(test_case)
-    print(f"✅ Answer Correctness:   {correctness.score} (Reason: {correctness.reason})")
+    print(f" Answer Correctness:   {correctness.score} (Reason: {correctness.reason})")
 
 def evaluate_rag_answer(query, actual_answer, retrieved_docs, expected_output, expected_context):
     """
@@ -254,7 +255,7 @@ if __name__ == "__main__":
     ]
 
     print(f" Câu hỏi: {question}")
-    print("🤖 Đang chạy Agentic RAG...")
+    print(" Đang chạy Agentic RAG...")
     
     try:
         # 2. Gọi hàm RAG
@@ -265,11 +266,11 @@ if __name__ == "__main__":
 
         # --- IN KẾT QUẢ ĐỂ KIỂM TRA ---
         print("\n" + "="*50)
-        print("💡 CÂU TRẢ LỜI CỦA AI:")
+        print(" CÂU TRẢ LỜI CỦA AI:")
         print(actual_answer)
         print("="*50)
 
-        print(f"\n📚 TÌM THẤY {len(retrieved_docs)} TEXT CHUNKS:")
+        print(f"\n TÌM THẤY {len(retrieved_docs)} TEXT CHUNKS:")
         for i, (doc, score) in enumerate(retrieved_docs):
             print(f"   [{i+1}] Score: {score:.4f} | Content: {doc.page_content[:100]}...") 
             # (In 100 ký tự đầu của mỗi chunk để dễ nhìn)
