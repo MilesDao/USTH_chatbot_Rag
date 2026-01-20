@@ -139,10 +139,9 @@ def rag_answer(
 
 class GeminiJudge(DeepEvalBaseLLM):
     def __init__(self):
-        # Lấy API KEY trực tiếp từ biến môi trường
         api_key = os.getenv("GOOGLE_API_KEY")
         
-        # Truyền key vào tham số google_api_key
+        
         self.model = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash", 
             temperature=0,
@@ -160,7 +159,7 @@ def quick_evaluate(query, agentic_result, expected_output, expected_context):
     expected_output: Câu trả lời mẫu (String)
     expected_context: List các ý chính trong context mẫu (List[String])
     """
-    # --- BẮT ĐẦU THÂN HÀM (Tất cả phải thụt vào) ---
+
     
     actual_output, docs = agentic_result
     
@@ -241,12 +240,7 @@ def evaluate_rag_answer(query, actual_answer, retrieved_docs, expected_output, e
         "correctness_reason": correctness.reason
     }
 
-# ==========================================
-# CÁCH DÙNG (Sửa lại phần main cũ của bạn)
-# ==========================================
-# ==========================================
-# CÁCH DÙNG (CHẠY THỬ VÀ ĐÁNH GIÁ)
-# ==========================================
+
 if __name__ == "__main__":
     # 1. Định nghĩa câu hỏi và đáp án chuẩn (Golden Data)
     question = "Điều kiện thi cải thiện là gì?"
@@ -259,7 +253,7 @@ if __name__ == "__main__":
         "Students who have the final exam score of 10.0 or higher are allowed to register for a score improvement examination"
     ]
 
-    print(f"❓ Câu hỏi: {question}")
+    print(f" Câu hỏi: {question}")
     print("🤖 Đang chạy Agentic RAG...")
     
     try:
@@ -285,6 +279,6 @@ if __name__ == "__main__":
         quick_evaluate(question, result, expected_answer, expected_chunks)
         
     except Exception as e:
-        print(f"❌ Có lỗi xảy ra: {e}")
+        print(f" Có lỗi xảy ra: {e}")
         import traceback
         traceback.print_exc()
