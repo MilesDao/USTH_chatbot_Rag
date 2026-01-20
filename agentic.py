@@ -82,16 +82,19 @@ Bạn là Trợ lý AI Tư vấn Tuyển sinh và Hỗ trợ Sinh viên của Tr
        - CHỈ sử dụng thông tin có trong [CONTEXT].
        - Nếu thông tin không có trong tài liệu, hãy trả lời: "Xin lỗi, hiện tại trong tài liệu quy chế mình chưa tìm thấy thông tin cụ thể về vấn đề này. Bạn vui lòng liên hệ trực tiếp phòng Đào tạo hoặc Fanpage USTH để được hỗ trợ chính xác nhất."
        - KHÔNG tự suy đoán hoặc bịa đặt thông tin (đặc biệt là các con số, ngày tháng).
+       - KHÔNG được tự ý thay đổi thuật ngữ chuyên ngành (Ví dụ: phải phân biệt rõ "Điểm thi", "Điểm học phần", "Điểm tổng kết"). Nếu văn bản ghi là "điểm thi kết thúc học phần", hãy dùng chính xác cụm từ đó.
 
     2. **PHONG CÁCH TƯ VẤN:**
        - Dữ liệu đầu vào là các văn bản hành chính/quy chế (Quyết định, Thông tư...), nhiệm vụ của bạn là **diễn giải lại** thành ngôn ngữ tư vấn dễ hiểu, thân thiện cho học sinh/sinh viên.
        - Giọng điệu: Chuyên nghiệp, nhiệt tình, khích lệ.
        - Xưng hô: "Trợ lý" hoặc "Mình" và gọi người dùng là "Bạn".
+                                              
 
     3. **TRÌNH BÀY:**
        - Sử dụng **in đậm** cho các thông tin quan trọng (Hạn chót, Mức học phí, Điểm số yêu cầu, Tên chứng chỉ).
        - Sử dụng gạch đầu dòng để liệt kê các bước hoặc điều kiện.
        - Nếu câu trả lời dài, hãy tóm tắt ý chính ở đầu.
+       - Tuyệt đối trích dẫn đúng cụm từ trong văn bản gốc, không tự ý rút gọn.
 
 Hãy trả lời bằng tiếng Việt, rõ ràng, chính xác và trung thực.
 """)
@@ -139,10 +142,10 @@ def rag_answer(
 
 class GeminiJudge(DeepEvalBaseLLM):
     def __init__(self):
-        
+        # Lấy API KEY trực tiếp từ biến môi trường
         api_key = os.getenv("GOOGLE_API_KEY")
         
-        
+        # Truyền key vào tham số google_api_key
         self.model = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash", 
             temperature=0,
@@ -198,10 +201,10 @@ def quick_evaluate(query, agentic_result, expected_output, expected_context):
     
     # Đo lường
     precision.measure(test_case)
-    print(f" Text Chunk Precision: {precision.score} (Reason: {precision.reason})")
+    print(f"✅ Text Chunk Precision: {precision.score} (Reason: {precision.reason})")
 
     correctness.measure(test_case)
-    print(f" Answer Correctness:   {correctness.score} (Reason: {correctness.reason})")
+    print(f"✅ Answer Correctness:   {correctness.score} (Reason: {correctness.reason})")
 
 def evaluate_rag_answer(query, actual_answer, retrieved_docs, expected_output, expected_context):
     """
@@ -254,8 +257,8 @@ if __name__ == "__main__":
         "Students who have the final exam score of 10.0 or higher are allowed to register for a score improvement examination"
     ]
 
-    print(f" Câu hỏi: {question}")
-    print(" Đang chạy Agentic RAG...")
+    print(f"❓ Câu hỏi: {question}")
+    print("🤖 Đang chạy Agentic RAG...")
     
     try:
         # 2. Gọi hàm RAG
@@ -266,11 +269,11 @@ if __name__ == "__main__":
 
         # --- IN KẾT QUẢ ĐỂ KIỂM TRA ---
         print("\n" + "="*50)
-        print(" CÂU TRẢ LỜI CỦA AI:")
+        print("💡 CÂU TRẢ LỜI CỦA AI:")
         print(actual_answer)
         print("="*50)
 
-        print(f"\n TÌM THẤY {len(retrieved_docs)} TEXT CHUNKS:")
+        print(f"\n📚 TÌM THẤY {len(retrieved_docs)} TEXT CHUNKS:")
         for i, (doc, score) in enumerate(retrieved_docs):
             print(f"   [{i+1}] Score: {score:.4f} | Content: {doc.page_content[:100]}...") 
             # (In 100 ký tự đầu của mỗi chunk để dễ nhìn)
@@ -280,6 +283,6 @@ if __name__ == "__main__":
         quick_evaluate(question, result, expected_answer, expected_chunks)
         
     except Exception as e:
-        print(f" Có lỗi xảy ra: {e}")
+        print(f"❌ Có lỗi xảy ra: {e}")
         import traceback
         traceback.print_exc()
