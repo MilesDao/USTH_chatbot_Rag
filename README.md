@@ -130,5 +130,5 @@ streamlit run app.py           # http://localhost:8501
     
 ### 5. Architecture Diagram
 <p align="center">
-  <img src="assets/Diagram-RAG(Chatbot USTH).drawio.svg" width="400">
+  <img src="assets/Diagram-RAG(Chatbot USTH).drawio.svg" width="1000">
 </p>
