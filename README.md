@@ -126,9 +126,11 @@ What happens:
 streamlit run app.py           # http://localhost:8501
 ```
 4.3 Quick for demo testing
+<div align = "center">
 <p><a href="https://usthchatbotrag.streamlit.app/">USTH-Chatbot</a><p>
 <p><a href="https://docs.google.com/document/d/133bbOP1RWnCEvOU-F5CXRcbHvfVtXhdFI_-Xh43vGl8/edit?tab=t.0#heading=h.wdh4lfq93xql">Team document</a><p>
-    
+</div>
+
 ### 5. Architecture Diagram
 <p align="center">
   <img src="assets/Diagram-RAG(Chatbot USTH).drawio.svg" width="1000">
