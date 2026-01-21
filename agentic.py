@@ -258,8 +258,8 @@ Sinh viên phải có điểm thi kết thúc học phần từ 10.0/20.0 trở 
         "Students who have the overall course score of 10.0/20.0 or higher are allowed to register for a score improvement examination"
     ]
 
-    print(f"❓ Câu hỏi: {question}")
-    print("🤖 Đang chạy Agentic RAG...")
+    print(f"Câu hỏi: {question}")
+    print("Đang chạy Agentic RAG...")
     
     try:
         # 2. Gọi hàm RAG
@@ -270,21 +270,20 @@ Sinh viên phải có điểm thi kết thúc học phần từ 10.0/20.0 trở 
 
         # --- IN KẾT QUẢ ĐỂ KIỂM TRA ---
         print("\n" + "="*50)
-        print("💡 CÂU TRẢ LỜI CỦA AI:")
+        print("CÂU TRẢ LỜI CỦA AI:")
         print(actual_answer)
         print("="*50)
 
-        print(f"\n📚 TÌM THẤY {len(retrieved_docs)} TEXT CHUNKS:")
+        print(f"\nTÌM THẤY {len(retrieved_docs)} TEXT CHUNKS:")
         for i, (doc, score) in enumerate(retrieved_docs):
             print(f"   [{i+1}] Score: {score:.4f} | Content: {doc.page_content[:100]}...") 
-            # (In 100 ký tự đầu của mỗi chunk để dễ nhìn)
 
-        # 3. GỌI HÀM CHẤM ĐIỂM
+
         print("\n" + "-"*20 + " BẮT ĐẦU CHẤM ĐIỂM " + "-"*20)
         quick_evaluate(question, result, expected_answer, expected_chunks)
         
     except Exception as e:
-        print(f"❌ Có lỗi xảy ra: {e}")
+        print(f"Có lỗi xảy ra: {e}")
         import traceback
         traceback.print_exc()
 
