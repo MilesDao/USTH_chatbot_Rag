@@ -141,22 +141,22 @@ def rag_answer(
 
 
 class GeminiJudge(DeepEvalBaseLLM):
-    def __init__(self):
-        # Lấy API KEY trực tiếp từ biến môi trường
-        api_key = os.getenv("GOOGLE_API_KEY")
+    def __init__(self, api_key=None):
+        # Lấy API KEY từ tham số hoặc biến môi trường
+        self.api_key = api_key if api_key else os.getenv("GOOGLE_API_KEY")
         
         # Truyền key vào tham số google_api_key
         self.model = ChatGoogleGenerativeAI(
             model="gemini-2.5-flash", 
             temperature=0,
-            google_api_key=api_key 
+            google_api_key=self.api_key 
         )
     def load_model(self): return self.model
     def generate(self, prompt): return self.model.invoke(prompt).content
     async def a_generate(self, prompt): return (await self.model.ainvoke(prompt)).content
     def get_model_name(self): return "gemini-2.5-flash"
 
-def quick_evaluate(query, agentic_result, expected_output, expected_context):
+def quick_evaluate(query, agentic_result, expected_output, expected_context, api_key=None):
     """
     query: Câu hỏi
     agentic_result: Tuple (answer_text, list_of_docs) trả về từ hàm rag_answer
@@ -183,7 +183,7 @@ def quick_evaluate(query, agentic_result, expected_output, expected_context):
         expected_context=expected_context
     )
 
-    judge = GeminiJudge()
+    judge = GeminiJudge(api_key=api_key)
 
     # Metric 1: Contextual Precision
     precision = ContextualPrecisionMetric(threshold=0.5, model=judge, include_reason=True)
@@ -206,7 +206,7 @@ def quick_evaluate(query, agentic_result, expected_output, expected_context):
     correctness.measure(test_case)
     print(f"✅ Answer Correctness:   {correctness.score} (Reason: {correctness.reason})")
 
-def evaluate_rag_answer(query, actual_answer, retrieved_docs, expected_output, expected_context):
+def evaluate_rag_answer(query, actual_answer, retrieved_docs, expected_output, expected_context, api_key=None):
     """
     Evaluates the RAG answer and returns a dictionary of metrics.
     """
@@ -223,7 +223,7 @@ def evaluate_rag_answer(query, actual_answer, retrieved_docs, expected_output, e
         expected_context=expected_context
     )
 
-    judge = GeminiJudge()
+    judge = GeminiJudge(api_key=api_key)
 
     precision = ContextualPrecisionMetric(threshold=0.5, model=judge, include_reason=True)
     correctness = GEval(

@@ -94,7 +94,8 @@ for i, turn in enumerate(st.session_state.chat):
                                     actual_answer=turn['answer'],
                                     retrieved_docs=turn['results'],
                                     expected_output=expected_ans,
-                                    expected_context=exp_ctx_list
+                                    expected_context=exp_ctx_list,
+                                    api_key=google_api_key
                                 )
                                 
                                 # Update session state with evaluation result
