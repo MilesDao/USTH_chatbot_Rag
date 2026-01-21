@@ -250,11 +250,12 @@ if __name__ == "__main__":
     question = "Điều kiện thi cải thiện là gì?"
     
     # Đáp án kỳ vọng
-    expected_answer = "Sinh viên phải có điểm thi kết thúc học phần từ 10.0/20.0 trở lên mới được đăng ký thi cải thiện."
-    
+    expected_answer = """
+Sinh viên phải có điểm thi kết thúc học phần từ 10.0/20.0 trở lên.
+"""
     # Context kỳ vọng (Ý chính cần có trong tài liệu)
     expected_chunks = [
-        "Students who have the final exam score of 10.0 or higher are allowed to register for a score improvement examination"
+        "Students who have the overall course score of 10.0/20.0 or higher are allowed to register for a score improvement examination"
     ]
 
     print(f"❓ Câu hỏi: {question}")
@@ -286,3 +287,6 @@ if __name__ == "__main__":
         print(f"❌ Có lỗi xảy ra: {e}")
         import traceback
         traceback.print_exc()
+
+
+
