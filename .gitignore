@@ -78,4 +78,6 @@ chroma_db/
 *chroma_db/
 chromadb/
 
+# DeepEval
+.deepeval
 .deepeval/
