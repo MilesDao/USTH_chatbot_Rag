@@ -30,7 +30,6 @@ def e5_passage(text: str) -> str:
     return f"passage: {normalize_text(text)}"
 
 
-
 def get_vectorstore() -> Chroma:
     embeddings = HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
@@ -65,7 +64,6 @@ class E5Retriever:
             e5_query(query),
             k=self.k,
         )
-
 
 
 if __name__ == "__main__":

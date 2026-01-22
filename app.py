@@ -135,9 +135,3 @@ for i, turn in enumerate(st.session_state.chat):
 """
                     )
 
-if __name__ == "__main__":
-    # check if running with streamlit
-    import sys
-    if "streamlit" not in sys.modules:
-        print("Scrip này là ứng dụng Streamlit. Vui lòng chạy bằng lệnh:\nstreamlit run app.py")
-
