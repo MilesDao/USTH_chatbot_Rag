@@ -36,43 +36,43 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
         <td>1</td>
         <td>Đào Chí Trung</td>
         <td>23BA14295</td>
-        <td>Project Lead / Backend</td>
+        <td>Project Lead / Backend Engineer</td>
     </tr>
     <tr>
         <th>2</th>
          <td>Nguyễn Khải Minh</td>
         <td>2410607</td>
-        <td>RAG Base / Prompt Engineering / Evaluation core</td>
+        <td>RAG Pipeline Engineer / Prompt & Evaluation</td>
     </tr>
     <tr>
         <th>3</th>
          <td>Nguyễn Ngọc Hiếu</td>
         <td>23BA14109</td>
-        <td>Data Processing / OCR</td>
+        <td>Data Processing & OCR Engineer</td>
     </tr>
     <tr>
         <th>4</th>
         <td>Vũ Thị Kim Oanh</td>
         <td>23BA14225</td>
-        <td>Research / Problem statement</td>
+        <td>Research Lead / Problem Formulation</td>
     </tr>
     <tr>
         <th>5</th>
         <td>Phạm Gia Anh</td>
         <td>2410084</td>
-        <td>Research / Embedding model / Database</td>
+        <td>Embedding & Vector Database Researcher</td>
     </tr>
     <tr>
         <th>6</th>
         <td>Nguyễn Thị Ngọc Ánh</td>
         <td>2411095</td>
-        <td>Research / OCR Model / Data chunking</td>
+        <td>OCR Researcher / Data Chunking</td>
     </tr>
     <tr>
         <th>7</th>
         <td>Nguyễn Xuân Chuyên</td>
         <td>2410181</td>
-        <td>Research / Rag core / Evaluation</td>
+        <td>RAG Core Engineer / Evaluation</td>
     </tr>
 
   </tbody>
