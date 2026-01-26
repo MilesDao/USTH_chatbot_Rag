@@ -47,7 +47,7 @@ def get_vectorstore() -> Chroma:
 
 
 class E5Retriever:
-    def __init__(self, k: int = 5, threshold: float = 0.35):
+    def __init__(self, k: int = 8, threshold: float = 0.35):
         self.vectorstore = get_vectorstore()
         self.k = k
         self.threshold = threshold
@@ -67,7 +67,7 @@ class E5Retriever:
 
 
 if __name__ == "__main__":
-    retriever = E5Retriever(k=5, threshold=0.35)
+    retriever = E5Retriever(k=8, threshold=0.35)
 
     query = "có bao nhiêu loại học bổng USTH"
     results = retriever.retrieve_with_score(query)
