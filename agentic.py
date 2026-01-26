@@ -118,7 +118,7 @@ Provide a clear, accurate, and truthful answer in the SAME language as the user'
 
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
-        temperature=1,
+        temperature=0,
         max_tokens=3000,
         google_api_key=api_key
     )

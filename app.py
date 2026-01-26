@@ -47,7 +47,7 @@ if user_input:
         st.warning("Vui lòng nhập Google API Key ở sidebar để tiếp tục.")
     else:
         with st.spinner("Vui lòng đợi trong giây lát..."):
-            # Explicitly pass k=5 to match agentic/retriever logic
+            # Explicitly pass k=8 to match agentic/retriever logic
             answer, results = rag_answer(user_input, api_key=google_api_key, k=8)
             
             st.session_state.chat.append({
