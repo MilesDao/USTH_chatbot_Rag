@@ -36,13 +36,13 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
         <td>1</td>
         <td>Đào Chí Trung</td>
         <td>23BA14295</td>
-        <td>Project Lead / Backend Engineer</td>
+        <td>Project Lead & Backend Engineer</td>
     </tr>
     <tr>
         <th>2</th>
          <td>Nguyễn Khải Minh</td>
         <td>2410607</td>
-        <td>RAG Pipeline Engineer / Prompt & Evaluation</td>
+        <td>RAG Pipeline Engineer & Prompt & Evaluation</td>
     </tr>
     <tr>
         <th>3</th>
@@ -54,7 +54,7 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
         <th>4</th>
         <td>Vũ Thị Kim Oanh</td>
         <td>23BA14225</td>
-        <td>Research Lead / Problem Formulation</td>
+        <td>Research Lead & Problem Formulation</td>
     </tr>
     <tr>
         <th>5</th>
@@ -66,13 +66,13 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
         <th>6</th>
         <td>Nguyễn Thị Ngọc Ánh</td>
         <td>2411095</td>
-        <td>OCR Researcher / Data Chunking</td>
+        <td>OCR Researcher & Data Chunking</td>
     </tr>
     <tr>
         <th>7</th>
         <td>Nguyễn Xuân Chuyên</td>
         <td>2410181</td>
-        <td>RAG Core Engineer / Evaluation</td>
+        <td>RAG Core Engineer & Evaluation</td>
     </tr>
 
   </tbody>
