@@ -102,7 +102,7 @@ Hãy trả lời bằng tiếng Việt, rõ ràng, chính xác và trung thực.
     llm = ChatGoogleGenerativeAI(
         model="gemini-2.5-flash",
         temperature=0.8,
-        max_tokens=1200,
+        max_tokens=3000,
         google_api_key=api_key
     )
 
