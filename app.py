@@ -48,7 +48,7 @@ if user_input:
     else:
         with st.spinner("Vui lòng đợi trong giây lát..."):
             # Explicitly pass k=5 to match agentic/retriever logic
-            answer, results = rag_answer(user_input, api_key=google_api_key, k=5)
+            answer, results = rag_answer(user_input, api_key=google_api_key, k=8)
             
             st.session_state.chat.append({
                 "question": user_input,
