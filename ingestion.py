@@ -26,8 +26,8 @@ def load_and_split_data():
     print(f"Loaded {len(documents)} documents.")
 
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=500,
-        chunk_overlap=10
+        chunk_size=250,
+        chunk_overlap=50
     )
     docs = text_splitter.split_documents(documents)
 
