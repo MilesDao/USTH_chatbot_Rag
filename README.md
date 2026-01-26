@@ -192,3 +192,8 @@ These metrics can be:
 - Printed to console for debugging
 - Logged for experiments
  - Integrated into a Streamlit or CI evaluation workflow
+
+Demo:
+<p align="center">
+  <img src="assets/demoeval.png" width="800">
+</p>
