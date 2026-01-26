@@ -47,27 +47,27 @@ def get_vectorstore() -> Chroma:
 
 
 class E5Retriever:
-    def __init__(self, k: int = 5):
+    def __init__(self, k: int = 5, threshold: float = 0.35):
         self.vectorstore = get_vectorstore()
         self.k = k
+        self.threshold = threshold
 
     def get_relevant_documents(self, query: str) -> List[Document]:
-
-        return self.vectorstore.similarity_search(
-            e5_query(query),
-            k=self.k,
-        )
-
+        docs_and_scores = self.retrieve_with_score(query)
+        return [doc for doc, score in docs_and_scores]
+    
     def retrieve_with_score(self, query: str) -> List[Tuple[Document, float]]:
-
-        return self.vectorstore.similarity_search_with_score(
+        docs_and_scores = self.vectorstore.similarity_search_with_score(
             e5_query(query),
             k=self.k,
         )
+        
+        # Filter by threshold (assuming L2 distance where lower is better)
+        return [(doc, score) for doc, score in docs_and_scores if score <= self.threshold]
 
 
 if __name__ == "__main__":
-    retriever = E5Retriever(k=8)
+    retriever = E5Retriever(k=5, threshold=0.35)
 
     query = "có bao nhiêu loại học bổng USTH"
     results = retriever.retrieve_with_score(query)
@@ -83,3 +83,4 @@ if __name__ == "__main__":
             print(f"Chunk ID: {doc.metadata.get('chunk_id', 'N/A')}")
             print("Text preview:")
             print(doc.page_content[:500])
+

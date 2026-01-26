@@ -129,7 +129,7 @@ Provide a clear, accurate, and truthful answer in the SAME language as the user'
 # Agentic RAG (GENERAL)
 def rag_answer(
     question: str,
-    k: int = 8,
+    k: int = 5,
     api_key: str = GOOGLE_API_KEY,
 ):
     retriever = E5Retriever(k=k)
