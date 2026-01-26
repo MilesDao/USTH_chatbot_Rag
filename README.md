@@ -194,6 +194,6 @@ These metrics can be:
  - Integrated into a Streamlit or CI evaluation workflow
 
 Demo:
-<p align="center">
-  <img src="assets/demoeval.png" width="800">
+<p>
+  <img src="assets/demoeval.png" width="500">
 </p>
