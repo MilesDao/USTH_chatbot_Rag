@@ -1,7 +1,7 @@
 from time import sleep
 
 from langchain_community.document_loaders import TextLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_experimental.text_splitter import SemanticChunker
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
@@ -25,10 +25,7 @@ def load_and_split_data():
 
     print(f"Loaded {len(documents)} documents.")
 
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=300,
-        chunk_overlap=50
-    )
+    text_splitter = SemanticChunker(embeddings_model)
     docs = text_splitter.split_documents(documents)
 
     for idx, doc in enumerate(docs):

@@ -47,7 +47,7 @@ def get_vectorstore() -> Chroma:
 
 
 class E5Retriever:
-    def __init__(self, k: int = 8, threshold: float = 0.35):
+    def __init__(self, k: int = 8, threshold: float = 0.79):
         self.vectorstore = get_vectorstore()
         self.k = k
         self.threshold = threshold
@@ -62,14 +62,20 @@ class E5Retriever:
             k=self.k,
         )
         
-        # Filter by threshold (assuming L2 distance where lower is better)
-        return [(doc, score) for doc, score in docs_and_scores if score <= self.threshold]
+        
+        results = []
+        for doc, score in docs_and_scores:
+            similarity_score = 1 - (score / 2)
+            results.append((doc, similarity_score))
+            
+        # Filter by threshold (Higher score is better)
+        return [(doc, score) for doc, score in results if score >= self.threshold]
 
 
 if __name__ == "__main__":
-    retriever = E5Retriever(k=8, threshold=0.35)
+    retriever = E5Retriever(k=8, threshold=0.79)
 
-    query = "có bao nhiêu loại học bổng USTH"
+    query = "Các học bổng USTH"
     results = retriever.retrieve_with_score(query)
 
     print(f"\nQuery: {query}")

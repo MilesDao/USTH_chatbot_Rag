@@ -46,7 +46,7 @@ if user_input:
     if not google_api_key:
         st.warning("Vui lòng nhập Google API Key ở sidebar để tiếp tục.")
     else:
-        with st.spinner("Vui lòng đợi trong giây lát..."):
+        with st.spinner("Chờ xíu..."):
             # Explicitly pass k=8 to match agentic/retriever logic
             answer, results = rag_answer(user_input, api_key=google_api_key, k=8)
             

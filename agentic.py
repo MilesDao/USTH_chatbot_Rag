@@ -29,13 +29,13 @@ warnings.filterwarnings("ignore", category=RuntimeWarning)
 def is_context_usable(docs_with_scores: List[Tuple[Document, float]],
     min_chunks: int = 1,
     min_chars: int = 100,
-    max_score: float = 0.6,
+    min_score: float = 0.7,
 ) -> bool:
     """
     Context usable nếu:
     - Có >= min_chunks
     - Tổng ký tự >= min_chars
-    - Ít nhất 1 chunk có score đủ tốt
+    - Ít nhất 1 chunk có score đủ tốt (>= min_score)
     """
     if not docs_with_scores or len(docs_with_scores) < min_chunks:
         return False
@@ -44,8 +44,8 @@ def is_context_usable(docs_with_scores: List[Tuple[Document, float]],
     if total_chars < min_chars:
         return False
 
-    best_score = min(score for _, score in docs_with_scores)
-    return best_score <= max_score
+    best_score = max(score for _, score in docs_with_scores)
+    return best_score >= min_score
 
 # Build Context
 
