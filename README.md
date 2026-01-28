@@ -193,7 +193,7 @@ These metrics can be:
 - Logged for experiments
  - Integrated into a Streamlit or CI evaluation workflow
 
-Demo:
+6.4 Demo:
 <p>
   <img src="assets/evaluation-demo.png" width="500">
 </p>
