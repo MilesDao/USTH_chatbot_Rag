@@ -75,7 +75,7 @@ class E5Retriever:
 if __name__ == "__main__":
     retriever = E5Retriever(k=8, threshold=0.79)
 
-    query = "Các học bổng USTH"
+    query = "Câu lạc bộ Artificial Intelligence"
     results = retriever.retrieve_with_score(query)
 
     print(f"\nQuery: {query}")
@@ -88,5 +88,5 @@ if __name__ == "__main__":
             print(f"\nChunk {i} (Score: {score:.4f})")
             print(f"Chunk ID: {doc.metadata.get('chunk_id', 'N/A')}")
             print("Text preview:")
-            print(doc.page_content[:500])
+            print(doc.page_content[:])
 

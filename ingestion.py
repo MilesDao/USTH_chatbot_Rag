@@ -1,6 +1,8 @@
 from time import sleep
 
+from langchain_community.document_loaders import DirectoryLoader
 from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -15,28 +17,46 @@ COLLECTION_NAME = "langchain"
 from retriever import normalize_text
 
 def load_and_split_data():
-    print("Loading data/finaldata.txt ...")
-    loader = TextLoader("data/finaldata.txt", encoding="utf-8")
+    print("Loading text files from data/valid ...")
+    # 1. Load all .txt files from data/valid
+    loader = DirectoryLoader("data/valid", glob="**/*.txt", loader_cls=TextLoader, loader_kwargs={"encoding": "utf-8"})
     documents = loader.load()
 
     if not documents:
-        print("No documents found in data/finaldata.txt")
+        print("No documents found in data/valid")
         return []
 
     print(f"Loaded {len(documents)} documents.")
 
-    text_splitter = SemanticChunker(embeddings_model)
-    docs = text_splitter.split_documents(documents)
+    # 2. Pre-split
+    print("Pre-splitting documents...")
+    pre_splitter = RecursiveCharacterTextSplitter(
+        separators=["\n## PART", "\n## PHẦN", "\nArticle", "\nĐiều"],
+        chunk_size=3000,
+        chunk_overlap=0,
+        keep_separator=True,
+        strip_whitespace=True
+    )
+    pre_split_docs = pre_splitter.split_documents(documents)
+    print(f"Pre-split into {len(pre_split_docs)} chunks.")
+
+    # 3. Apply Semantic Chunking
+    print("Applying Semantic Chunking...")
+    text_splitter = SemanticChunker(
+        embeddings_model, 
+        breakpoint_threshold_type="gradient"
+    )
+    docs = text_splitter.split_documents(pre_split_docs)
 
     for idx, doc in enumerate(docs):
         doc.metadata["chunk_id"] = idx
         if "source" in doc.metadata:
-            doc.metadata["source"] = doc.metadata["source"].split("/")[-1]
+            doc.metadata["source"] = doc.metadata["source"].split("\\")[-1]
         
         # Apply normalization and prefix for E5 model
         doc.page_content = f"passage: {normalize_text(doc.page_content)}"
     
-    print(f"Split into {len(docs)} chunks.")
+    print(f"Final Semantic Split into {len(docs)} chunks.")
     return docs
 
 import chromadb
