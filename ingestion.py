@@ -31,7 +31,7 @@ def load_and_split_data():
     # 2. Pre-split
     print("Pre-splitting documents...")
     pre_splitter = RecursiveCharacterTextSplitter(
-        separators=["\n## PART", "\n## PHẦN", "\nArticle", "\nĐiều"],
+        separators=["\n## PART", "\n## PHẦN", "\nPHẦN", "\nArticle", "\nĐiều"],
         chunk_size=3000,
         chunk_overlap=0,
         keep_separator=True,
