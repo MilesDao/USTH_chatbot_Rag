@@ -1,0 +1,43 @@
+[DOCUMENT TYPE]: Informational Notice
+[DOCUMENT TITLE]: Thông tin vui
+[ISSUING AUTHORITY]: Không xác định
+[DECISION NUMBER]: Không áp dụng
+[ISSUED DATE]: Không xác định
+[LANGUAGE]: Vietnamese
+
+Thông tin vui
+
+PART I: Nhóm phát triển USTH Chatbot
+
+USTH Chatbot được thực hiện bởi các sinh viên của Trường Đại học Khoa học và Công nghệ Hà Nội (USTH), bao gồm các cá nhân sau:
+
+Nguyễn Ngọc Hiếu
+
+Đào Trí Trung
+
+Nguyễn Khải Minh
+
+Nguyễn Thị Ngọc Ánh
+
+Vũ Thị Kim Oanh
+
+Phạm Gia Anh
+
+Nguyễn Xuân Chuyên
+
+PART II: Giảng viên và trợ giảng liên quan
+Article 1. Giảng viên phụ trách
+
+Thầy Khang
+
+Chức danh: Giảng viên
+
+Môn giảng dạy: Nhập môn Trí tuệ Nhân tạo
+
+Article 2. Trợ giảng
+
+Anh An
+
+Vai trò: Trợ giảng
+
+Đặc điểm: Nhiệt tình và thân thiện
