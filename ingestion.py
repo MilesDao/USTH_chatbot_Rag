@@ -97,10 +97,55 @@ def load_and_split_data():
     # SemanticChunker expects a list of Documents
     docs = text_splitter.split_documents(article_docs)
 
+    # 4. Post-processing: Merge small chunks (headers) with next chunk
+    print(f"Post-processing {len(docs)} chunks to merge small headers...")
+    merged_docs = []
+    min_chunk_len = 50  # Threshold definition
+    
+    i = 0
+    while i < len(docs):
+        current_doc = docs[i]
+        current_content = current_doc.page_content.strip()
+        
+        # Check if current chunk is small
+        if len(current_content) < min_chunk_len:
+            # If it's not the last chunk, merge with next
+            if i + 1 < len(docs):
+                next_doc = docs[i+1]
+                # Merge content
+                combined_content = current_content + "\n" + next_doc.page_content
+                # Update next doc content and keep metadata ?? 
+                # Better: Modify next_doc and skip current
+                next_doc.page_content = combined_content
+                # Move to next (which is now merged)
+                # But wait, what if the NEXT one is also small? 
+                # The loop will handle it in next iteration.
+                # Actually, if we merge into [i+1], we should continue loop to process [i+1] (which is now larger)
+                # So we just increment i? No, we skip adding current_doc separately.
+                # But we updated docs[i+1] inside the list? Yes if mutable.
+                docs[i+1].page_content = combined_content
+                i += 1
+                continue
+            else:
+                # If it's the very last chunk and small, maybe append to previous?
+                if merged_docs:
+                    merged_docs[-1].page_content += "\n" + current_content
+                else:
+                    merged_docs.append(current_doc)
+                i += 1
+        else:
+            merged_docs.append(current_doc)
+            i += 1
+            
+    docs = merged_docs
+    print(f"After merging: {len(docs)} chunks.")
+
     for idx, doc in enumerate(docs):
         doc.metadata["chunk_id"] = idx
+        # Keep source logic
         if "source" in doc.metadata:
-            doc.metadata["source"] = doc.metadata["source"].split("\\")[-1]
+            # Ensure source is just filename if not already
+             doc.metadata["source"] = str(doc.metadata["source"]).split("\\")[-1]
 
         # Apply normalization and prefix for E5 model
         doc.page_content = f"passage: {normalize_text(doc.page_content)}"

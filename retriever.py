@@ -75,7 +75,7 @@ class E5Retriever:
 if __name__ == "__main__":
     retriever = E5Retriever(k=8, threshold=0.79)
 
-    query = "Các loại học bổng"
+    query = "Câu lạc bộ âm nhạc"
     results = retriever.retrieve_with_score(query)
 
     print(f"\nQuery: {query}")
