@@ -111,11 +111,21 @@ for i, turn in enumerate(st.session_state.chat):
             
             m_col1, m_col2 = st.columns(2)
             with m_col1:
-                st.metric("Contextual Precision", f"{eval_res['precision_score']:.2f}")
+                prec_score = eval_res['precision_score']
+                st.metric("Contextual Precision", f"{prec_score:.2f}")
+                if prec_score >= 0.5:
+                    st.success("✅ RELEVANT")
+                else:
+                    st.error("❌ FAIL")
                 st.info(f"**Reason:** {eval_res['precision_reason']}")
             
             with m_col2:
-                st.metric("Answer Correctness", f"{eval_res['correctness_score']:.2f}")
+                corr_score = eval_res['correctness_score']
+                st.metric("Answer Correctness", f"{corr_score:.2f}")
+                if corr_score >= 0.5:
+                    st.success("✅ RELEVANT")
+                else:
+                    st.error("❌ FAIL")
                 st.info(f"**Reason:** {eval_res['correctness_reason']}")
 
     with col_chunks:
