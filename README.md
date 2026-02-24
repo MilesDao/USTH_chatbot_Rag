@@ -195,5 +195,5 @@ These metrics can be:
 
 6.4 Demo:
 <p>
-  <img src="assets/evaluation-demo.png" width="500">
+  <img src="assets/evaluation-demo.png" width="1000">
 </p>
