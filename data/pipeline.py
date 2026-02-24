@@ -132,14 +132,107 @@ def ollama_refine_block(
     timeout: int = 120,
 ) -> str:
     prompt = (
-        "Bạn là công cụ hiệu đính văn bản OCR tiếng Việt.\n"
-        "YÊU CẦU BẮT BUỘC:\n"
-        "1) Chỉ sửa lỗi OCR/chính tả/ký tự, thêm dấu câu, xuống dòng.\n"
-        "2) KHÔNG bịa, KHÔNG thêm dữ kiện.\n"
-        "3) Không chắc thì giữ nguyên và thêm [UNCLEAR].\n"
-        "4) Trả về CHỈ văn bản đã hiệu đính.\n"
-        "\n---\n\n"
-        f"{block}\n"
+        "You are a document structuring and preprocessing assistant for Retrieval-Augmented Generation (RAG).
+        Your task is to transform raw OCR-extracted or PDF-extracted Vietnamese administrative or legal text
+        into a clean, structured, and semantically meaningful format optimized for:
+        
+        - Semantic chunking
+        - Embedding-based retrieval
+        - Question answering by large language models
+        
+        ====================
+        GENERAL RULES
+        ====================
+        
+        1. DO NOT summarize, rewrite creatively, or remove any meaningful content.
+        2. Preserve all legal meanings, conditions, numbers, dates, and obligations.
+        3. Fix OCR noise, broken lines, duplicated headers, and misplaced page artifacts.
+        4. Reorganize the text ONLY to improve structure and semantic clarity.
+        5. Use clear section markers and consistent formatting.
+        6. Output ONLY the formatted document. Do NOT explain your steps.
+        
+        ====================
+        DOCUMENT STRUCTURE
+        ====================
+        
+        Format the document using the following hierarchy:
+        
+        - Document-level metadata at the top using key-value format:
+          [DOCUMENT TYPE]
+          [DOCUMENT TITLE]
+          [ISSUING AUTHORITY]
+          [DECISION NUMBER] (if any)
+          [ISSUED DATE]
+          [LANGUAGE]
+        
+        - Use Markdown-style headers:
+          # for document title
+          ## for major sections (Decision, Regulation, Part I, Part II, etc.)
+          ### for Articles (Điều)
+          #### for Clauses (Khoản)
+          - for bullet points
+        
+        ====================
+        CONTENT NORMALIZATION RULES
+        ====================
+        
+        A. HEADERS AND SECTIONS
+        - Detect and normalize section titles such as:
+          “QUYẾT ĐỊNH”, “QUY ĐỊNH”, “PHẦN”, “CHƯƠNG”, “Điều”
+        - Convert them into clear English-style structural markers:
+          - “PHẦN I” → “## PART I: …”
+          - “Điều 3. Nguyên tắc xét học bổng” → “### Article 3. Scholarship Principles”
+        
+        B. CLAUSES AND LISTS
+        - Split numbered clauses into separate paragraphs:
+          - “1.”, “2.”, “a)”, “b)” → individual bullet points or clauses
+        - Use:
+          #### Clause X.Y
+          for long or important clauses
+        
+        C. TABLE HANDLING
+        - DO NOT keep raw OCR tables.
+        - Convert tables into semantic bullet lists or key-value lists.
+        - Preserve all values, percentages, conditions, and mappings.
+        
+        Example:
+        Instead of a table, output:
+        - Scholarship Level A1: 100% tuition fee
+        - Scholarship Level A2: 80% tuition fee
+        
+        D. PROCEDURES AND TIMELINES
+        - Convert processes into step-based structures:
+          - Step 1: …
+          - Step 2: …
+        
+        E. DUPLICATES AND NOISE
+        - Remove duplicated headers caused by page breaks.
+        - Remove page numbers, random symbols, or broken words.
+        - Fix line breaks so each sentence is readable.
+        
+        ====================
+        LANGUAGE
+        ====================
+        
+        - Keep the original language of the document (Vietnamese).
+        - Do NOT translate unless explicitly instructed.
+        - Keep terminology consistent throughout the document.
+        
+        ====================
+        OUTPUT REQUIREMENTS
+        ====================
+        
+        - Output a single clean structured document.
+        - The document must be suitable for:
+          - Chunking by article or section
+          - Accurate semantic embedding
+          - Legal or academic question answering
+        
+        ====================
+        INPUT
+        ====================
+        
+        <RAW_DOCUMENT_TEXT>"
     )
 
     url = base_url.rstrip("/") + "/api/generate"
