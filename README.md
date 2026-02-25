@@ -78,39 +78,44 @@ The system focuses on accuracy, transparency, and avoiding hallucinations by str
   </tbody>
 </table>
 
-### 3. Installation
-3.1 Requirements
+### 3. Architecture Diagram
+<p align="center">
+  <img src="assets/Diagram-RAG(Chatbot USTH).drawio.svg" width="1000">
+</p>
+
+### 4. Installation
+4.1 Requirements
  - Python ≤ 3.11 ( Python 3.12 is not supported)
  - Git
  - (Optional) NVIDIA GPU for faster embedding
 
-3.2 Clone the repository
+4.2 Clone the repository
 ```bash
 git clone https://github.com/your-username/usth-chatbot.git
 cd usth-chatbot
 ```
 
-3.3 Create virtual environment
+4.3 Create virtual environment
 ```bash
 python -m venv venv
 source venv/bin/activate        # Linux / macOS
 venv\Scripts\activate           # Windows
 ```
 
-3.4 Install dependencies
+4.4 Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-3.5 Environment variables
+4.5 Environment variables
 
 Create a `.env` file:
 ```bash 
 GOOGLE_API_KEY = "Your_API_key"
 ```
 
-### 4. Local Usage Example
-4.1 Ingest PDF documents
-Place your PDFs in the data/pdfs/ folder, then run:
+### 5. Local Usage Example
+5.1 Ingest data documents
+Place your txt in the data/valid/ folder, then run:
 ```bash 
 python ingestion.py
 ```
@@ -121,20 +126,10 @@ What happens:
  4. Generate embeddings
  5. Store vectors in ChromaDB
 
-4.2 Run the chatbot locally
+5.2 Run the chatbot locally
 ```bash 
 streamlit run app.py           # http://localhost:8501
 ```
-4.3 Quick for demo testing
-<div align = "center">
-<p><a href="https://usthchatbotrag.streamlit.app/">USTH-Chatbot</a><p>
-<p><a href="https://docs.google.com/document/d/133bbOP1RWnCEvOU-F5CXRcbHvfVtXhdFI_-Xh43vGl8/edit?tab=t.0#heading=h.wdh4lfq93xql">Team document</a><p>
-</div>
-
-### 5. Architecture Diagram
-<p align="center">
-  <img src="assets/Diagram-RAG(Chatbot USTH).drawio.svg" width="1000">
-</p>
 
 ### 6. Evaluation Strategy
 This project includes an **automatic evaluation pipeline** to assess the quality of the Agentic RAG system, focusing on both **retrieval quality** and **answer correctness**.
